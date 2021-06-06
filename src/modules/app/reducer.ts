@@ -1,3 +1,4 @@
+import produce from 'immer';
 import type { AppAction } from './action';
 
 export type AppState = {
@@ -8,18 +9,10 @@ const initialState: AppState = {
   initialize: false,
 };
 
-export const reducer = (state: AppState = initialState, action: AppAction) => {
+export const reducer = produce((draft: AppState, action: AppAction) => {
   switch (action.type) {
-    case 'INIT_APP': {
-      return {
-        ...state,
-        initialize: true,
-      };
-    }
-
-    default:
-      return {
-        ...state,
-      };
+    case 'INIT_APP':
+      draft.initialize = true;
+      break;
   }
-};
+}, initialState);
