@@ -1,7 +1,8 @@
 import logger from 'redux-logger';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 // import { rootSaga } from '../modules/saga';
 import createSagaMiddleware from 'redux-saga';
+import { reducers } from '../modules/reducers';
 
 export const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -10,7 +11,9 @@ export const configureStore = () => {
     ...(process.env.NODE_ENV === 'development' ? [logger] : undefined),
   ];
 
-  const store = createStore(applyMiddleware(...middlewares));
+  const rootReducer = combineReducers(reducers);
+
+  const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
   // TODO: sagaの設定
   // sagaMiddleware.run(rootSaga);
