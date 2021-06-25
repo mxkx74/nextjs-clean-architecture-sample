@@ -5,7 +5,7 @@ export type AppState = {
   initialize: boolean;
 };
 
-const initialState: AppState = {
+export const initialState: AppState = {
   initialize: false,
 };
 
