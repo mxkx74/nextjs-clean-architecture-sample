@@ -6,7 +6,8 @@ import { reducers } from '../modules/reducers';
 
 export const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware, ...(process.env.NODE_ENV === 'development' ? [logger] : undefined)];
+  const loggerMiddleware = process.env.NODE_ENV === 'development' ? [logger] : [];
+  const middlewares = [sagaMiddleware, ...loggerMiddleware];
 
   const rootReducer = combineReducers(reducers);
 

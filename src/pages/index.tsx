@@ -1,12 +1,25 @@
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 
-const Home = () => (
+type Props = {
+  title: string;
+};
+
+const Home: NextPage<Props> = ({ title }) => (
   <main>
     <Head>
-      <title>HOME</title>
+      <title>{title}</title>
     </Head>
-    <p>Home</p>
+    <p>{title}</p>
   </main>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const result = await {
+    props: { title: 'HOME' },
+    revalidate: 60,
+  };
+  return result;
+};
 
 export default Home;
