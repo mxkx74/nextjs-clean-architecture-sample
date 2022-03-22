@@ -1,16 +1,16 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import { useEffect } from 'react';
+import { Component } from './Component';
 
-type Props = {
-  title: string;
+const Home: NextPage = () => {
+  const title = 'Home';
+
+  // didMount
+  useEffect(() => {
+    console.log('didMount');
+  }, []);
+
+  return <Component title={title} />;
 };
 
-export const Home: NextPage<Props> = ({ title }) => (
-  <main>
-    <Head>
-      <title>{title}</title>
-    </Head>
-    <p>{title}</p>
-  </main>
-);
-
+export default Home;
