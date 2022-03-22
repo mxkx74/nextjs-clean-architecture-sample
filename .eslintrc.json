@@ -1,23 +1,31 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "plugin:@next/next/recommended",
+    "next/core-web-vitals",
+    "plugin:import/recommended",
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "react/react-in-jsx-scope": "off", // next.jsではcomponentでreactのimportいらない
+    "react/display-name": "off",
+    "@next/next/no-img-element": "off",
+    "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["warn"],
-    "no-restricted-syntax": ["error", "TSEnumDeclaration"], // 禁止構文 enumの禁止
-    "react/prop-types": "off", // 型検査はtypescriptで対応しているため
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-restricted-syntax": ["error", "TSEnumDeclaration"],
+    "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "error",
-    "@typescript-eslint/explicit-member-accessibility": "off", // メンバのアクセス修飾子(pubic, privateなど)を必須にする
-    "@typescript-eslint/interface-name-prefix": "off", //interfaceの名前に必ずIのprefixをつける
-    "@typescript-eslint/explicit-function-return-type": "off", // functionの返値の型指定を必須にする
-    "@typescript-eslint/explicit-module-boundary-types": "off", // functionの返値の型指定を必須にする
-    "@typescript-eslint/prefer-interface": "off", // interfaceではなくtypeを優先して使う
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/prefer-interface": "off",
     "@typescript-eslint/ban-ts-ignore": "off",
-    "no-unused-expressions": "off", // optional chaining対応
+    "no-unused-expressions": "off",
     "@typescript-eslint/consistent-type-assertions": [
-      // <Type>のアサーションの代わりに as Type を使う
       "warn",
       {
         "assertionStyle": "as",
@@ -26,6 +34,16 @@
     ],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2],
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
   }
 }
