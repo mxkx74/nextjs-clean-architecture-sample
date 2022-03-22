@@ -32,23 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# typescript
-*.tsbuildinfo
-
-### Node Patch ###
-# Serverless Webpack directories
-.webpack/
-
-# Optional stylelint cache
-
-# SvelteKit build / generate output
-.svelte-kit
-
-### StorybookJs ###
-# gitignore template for the Storybook, UI guide for front apps
-# website: https://storybook.js.org/
-
-storybook-static/
-
-# End of https://www.toptal.com/developers/gitignore/api/node,storybookjs
