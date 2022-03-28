@@ -21,6 +21,7 @@
     "next": "^12.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.34.19",
     "react-responsive": "^9.0.0-beta.4",
     "react-transition-group": "^4.4.2",
     "styled-components": "^5.3.0"
@@ -67,6 +68,7 @@
     "eslint-plugin-storybook": "^0.5.7",
     "jest": "^27.5.1",
     "jest-styled-components": "^7.0.4",
+    "msw": "^0.39.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "snapshot-diff": "^0.9.0",
@@ -75,5 +77,8 @@
   },
   "resolutions": {
     "colors": "1.4.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
