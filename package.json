@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
+    "serve": "yarn export && serve ./out",
     "start": "next start",
     "lint": "run-p lint:*",
     "lint:eslint": "next lint",
@@ -72,6 +74,7 @@
     "msw": "^0.39.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
+    "serve": "^13.0.2",
     "snapshot-diff": "^0.9.0",
     "typescript": "^4.6.2",
     "webpack": "^5.70.0"
