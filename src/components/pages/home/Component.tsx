@@ -1,8 +1,11 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
+
+const Text = dynamic(() => import('../../text/'), { ssr: false });
 
 type Props = {
-  title: string;
+  title?: string;
 };
 
 export const Component: FC<Props> = ({ title }) => {
@@ -11,7 +14,9 @@ export const Component: FC<Props> = ({ title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <p>{title}</p>
+      <Suspense fallback={<p>loading...</p>}>
+        <Text />
+      </Suspense>
     </>
   );
 };
