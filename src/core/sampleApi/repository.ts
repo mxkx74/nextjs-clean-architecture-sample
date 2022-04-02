@@ -10,7 +10,7 @@ export const sampleRepository = {
       .get<Sample>(path.sample())
       .then((response) => response.data)
       .catch((reason: Error) => {
-        throw new Error(reason.message);
+        throw reason;
       });
   },
 };
