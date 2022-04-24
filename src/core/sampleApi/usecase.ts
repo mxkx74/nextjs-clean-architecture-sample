@@ -1,4 +1,4 @@
-import { QueryKey, useMutation, useQuery, UseQueryOptions } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { queryClient } from '../../lib/queryClient';
 import { type Entity } from './entity';
 import { sampleRepository } from './repository';
@@ -6,16 +6,15 @@ import { sampleRepository } from './repository';
 export type SampleData = Entity;
 export type PostResponseData = { message: string };
 
-export const useSampleQuery = (options?: UseQueryOptions<SampleData, Error>) => {
-  return useQuery('sample' as QueryKey, sampleRepository.getSample, {
+export const useSampleQuery = (id: number) => {
+  return useQuery(['sample', id], () => sampleRepository.getSample(id), {
     useErrorBoundary: true,
     suspense: true,
-    ...options,
   });
 };
 
 export const useSampleMutation = () => {
-  return useMutation(sampleRepository.postSample, {
+  return useMutation((data: SampleData) => sampleRepository.postSample(data), {
     onSettled: () => {
       queryClient.invalidateQueries('sample');
     },
