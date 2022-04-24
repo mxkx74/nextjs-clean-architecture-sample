@@ -17,4 +17,14 @@ export const handlers = [
       } as Source)
     );
   }),
+
+  rest.post(path.sample(), (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.delay(),
+      ctx.json({
+        message: 'success',
+      })
+    );
+  }),
 ];

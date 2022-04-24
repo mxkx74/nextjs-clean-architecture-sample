@@ -1,4 +1,4 @@
-export type Sample = {
+export type Entity = {
   title: string;
   text: string;
 };
