@@ -26,7 +26,7 @@ describe('mswを使ったテスト', () => {
     test('titleを取得できる', async () => {
       const { result } = renderHook(() => useSampleQuery(), { wrapper });
       await waitFor(() => {
-        expect(result.current.data?.title).toBe('CSR Source');
+        expect(result.current.data?.title).toBe('query');
       });
     });
   });
@@ -34,7 +34,7 @@ describe('mswを使ったテスト', () => {
   describe('mutation', () => {
     test('titleを取得できる', async () => {
       const data: SampleData = {
-        title: 'mutated',
+        title: 'mutation',
         text: 'new text',
       };
       const { result } = renderHook(() => useSampleMutation(), { wrapper });
