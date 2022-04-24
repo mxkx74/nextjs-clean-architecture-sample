@@ -32,7 +32,7 @@ describe('mswを使ったテスト', () => {
   });
 
   describe('mutation', () => {
-    test('titleを取得できる', async () => {
+    test('成功時のmessageはsuccess', async () => {
       const data: SampleData = {
         title: 'mutation',
         text: 'new text',
