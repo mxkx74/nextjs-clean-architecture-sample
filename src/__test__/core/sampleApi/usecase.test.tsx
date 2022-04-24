@@ -24,7 +24,7 @@ describe('mswを使ったテスト', () => {
 
   describe('query', () => {
     test('titleを取得できる', async () => {
-      const { result } = renderHook(() => useSampleQuery(), { wrapper });
+      const { result } = renderHook(() => useSampleQuery(1), { wrapper });
       await waitFor(() => {
         expect(result.current.data?.title).toBe('query');
       });

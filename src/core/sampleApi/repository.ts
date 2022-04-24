@@ -7,9 +7,9 @@ const client = getFetchClient(ENDPOINT);
 const endpoint = path.sample();
 
 export const sampleRepository = {
-  getSample: async (): Promise<SampleData> => {
+  getSample: async (id: number): Promise<SampleData> => {
     return await client
-      .get<SampleData, AxiosResponse<SampleData>>(endpoint)
+      .get<SampleData, AxiosResponse<SampleData>>(endpoint, { params: { id } })
       .then((response) => response.data)
       .catch((reason: AxiosError<Error>) => {
         throw reason;
