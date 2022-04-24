@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import { ReactChild } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useSampleQuery, useSampleMutation, type SampleData } from '../../../core/sampleApi/usecase';
@@ -24,9 +24,10 @@ describe('mswを使ったテスト', () => {
 
   describe('query', () => {
     test('titleを取得できる', async () => {
-      const { result, waitFor } = renderHook(() => useSampleQuery({ suspense: false }), { wrapper });
-      await waitFor(() => result.current.isSuccess);
-      expect(result.current.data?.title).toBe('CSR Source');
+      const { result } = renderHook(() => useSampleQuery(), { wrapper });
+      await waitFor(() => {
+        expect(result.current.data?.title).toBe('CSR Source');
+      });
     });
   });
 
@@ -36,11 +37,12 @@ describe('mswを使ったテスト', () => {
         title: 'mutated',
         text: 'new text',
       };
-      const { result, waitFor } = renderHook(() => useSampleMutation(), { wrapper });
+      const { result } = renderHook(() => useSampleMutation(), { wrapper });
       result.current.mutate(data);
 
-      await waitFor(() => result.current.isSuccess);
-      expect(result.current.data?.message).toBe('success');
+      await waitFor(() => {
+        expect(result.current.data?.message).toBe('success');
+      });
     });
   });
 });
