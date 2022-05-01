@@ -14,7 +14,8 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook --quiet"
+    "build-storybook": "build-storybook --quiet",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.24.0",
