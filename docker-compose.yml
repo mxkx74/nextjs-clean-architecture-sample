@@ -1,0 +1,17 @@
+version: '3'
+services:
+  next:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    working_dir: /app
+    command: yarn dev
+
