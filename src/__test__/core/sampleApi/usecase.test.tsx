@@ -26,7 +26,7 @@ describe('mswを使ったテスト', () => {
     test('titleを取得できる', async () => {
       const { result } = renderHook(() => useSampleQuery(1), { wrapper });
       await waitFor(() => {
-        expect(result.current.data?.title).toBe('query');
+        expect(result.current.data?.title).toBe('page1');
       });
     });
   });
