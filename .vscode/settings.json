@@ -1,0 +1,49 @@
+{
+    "files.insertFinalNewline": true,
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true, // 保存時にeslintを実行する
+        "source.fixAll.stylelint": true // 保存時にstylelintを実行する
+    },
+    "eslint.alwaysShowStatus": false, // ステータスバーにESLintを表示しない
+    "eslint.workingDirectories": [ // .eslintrc*を見てESLintの適用を自動で行う
+      {
+          "mode": "auto"
+      }
+    ],
+    "eslint.options": { // .eslintrc.js自身をlintする
+      "overrideConfig": {
+        "ignorePatterns": "!.eslintrc.js"
+      }
+    },
+    // [要検証] ファイルの自動監視対象から除外（動作軽量化が目的）
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/images/**": true,
+        "**/img/**": true,
+        "**/swf/**": true,
+        "**/Repos/**": true,
+        "**/out/**": true
+    },
+    // eslintのフォーマッターとバッティングするやつ停止
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.format.defaultFormatter.ts": "none",
+    "vetur.validation.template": false,
+    "html.format.enable": false,
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "typescript.format.enable": false,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue"
+    ],
+    "trailing-spaces.trimOnSave": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+}
