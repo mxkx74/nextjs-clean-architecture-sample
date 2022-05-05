@@ -1,7 +1,12 @@
-import { memo, ComponentPropsWithoutRef } from 'react';
+import { memo, ComponentPropsWithoutRef, ReactNode } from 'react';
 import { useSampleQuery } from '../../core/sampleApi';
 
-type ComponentProps = ComponentPropsWithoutRef<'p'>;
+type Props = {
+  children?: ReactNode;
+  hoge?: () => void;
+};
+
+type ComponentProps = ComponentPropsWithoutRef<'p'> & Props;
 
 const Text = memo<ComponentProps>(({ ...props }) => {
   const { data } = useSampleQuery(1);

@@ -1,21 +1,22 @@
-import { AppProps } from 'next/app';
+import { type NextPage } from 'next';
+import { type AppPropsWithLayout } from 'next/app';
 import { QueryClientProvider } from 'react-query';
 import { GlobalContextProvider } from '../components/context/global/GlobalProvider';
-import { Layout } from '../components/layout';
+import { DefaultLayout } from '../components/layout';
 import { queryClient } from '../lib/queryClient';
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../mock');
 }
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <QueryClientProvider client={queryClient}>
-    <GlobalContextProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </GlobalContextProvider>
-  </QueryClientProvider>
-);
+const App: NextPage<AppPropsWithLayout> = ({ Component, pageProps }) => {
+  const getLayout = Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <GlobalContextProvider>{getLayout(<Component {...pageProps} />)}</GlobalContextProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
