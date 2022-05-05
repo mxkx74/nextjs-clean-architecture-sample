@@ -1,11 +1,9 @@
 import type { NextPageWithLayout } from 'next';
-import { Page1Layout } from '../../../layout/page1';
+import Page1 from '../';
 import { Component } from './Component';
 
-const Thunks: NextPageWithLayout = () => {
-  return <Component />;
-};
+const Thunks: NextPageWithLayout = () => <Component />;
 
-Thunks.getLayout = (page: React.ReactNode) => <Page1Layout>{page}</Page1Layout>;
+Thunks.getLayout = Page1.getLayout;
 
 export default Thunks;

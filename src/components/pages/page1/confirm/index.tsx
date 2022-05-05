@@ -1,11 +1,10 @@
 import type { NextPageWithLayout } from 'next';
-import { Page1Layout } from '../../../layout/page1';
+
+import Page1 from '../';
 import { Component } from './Component';
 
-const Confirm: NextPageWithLayout = () => {
-  return <Component />;
-};
+const Confirm: NextPageWithLayout = () => <Component />;
 
-Confirm.getLayout = (page: React.ReactNode) => <Page1Layout>{page}</Page1Layout>;
+Confirm.getLayout = Page1.getLayout;
 
 export default Confirm;
