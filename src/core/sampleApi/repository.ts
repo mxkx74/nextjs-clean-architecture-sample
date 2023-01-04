@@ -1,4 +1,4 @@
-import { AxiosError, AxiosResponse } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 import { ENDPOINT, path } from '../../constant/path';
 import { getFetchClient } from '../../lib/apiClient';
 import { type SampleData, type PostResponseData } from './usecase';
