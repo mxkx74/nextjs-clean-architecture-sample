@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { queryClient } from '../../lib/queryClient';
 import { type Entity } from './entity';
 import { sampleRepository } from './repository';
+import { queryClient } from '@/lib/queryClient';
 
 export type SampleData = Entity;
 export type PostResponseData = { message: string };
