@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { path } from '../constant/path';
+import { path } from '@/constant/path';
 
 export type Source = {
   title: string;

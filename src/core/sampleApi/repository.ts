@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosResponse } from 'axios';
-import { ENDPOINT, path } from '../../constant/path';
-import { getFetchClient } from '../../lib/apiClient';
 import { type SampleData, type PostResponseData } from './usecase';
+import { ENDPOINT, path } from '@/constant/path';
+import { getFetchClient } from '@/lib/apiClient';
 
 const client = getFetchClient(ENDPOINT);
 const endpoint = path.sample();
