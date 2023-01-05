@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { queryClient } from '../../lib/queryClient';
 import { type Entity } from './entity';
 import { sampleRepository } from './repository';
@@ -16,7 +16,7 @@ export const useSampleQuery = (id: number) => {
 export const useSampleMutation = () => {
   return useMutation((data: SampleData) => sampleRepository.postSample(data), {
     onSettled: () => {
-      queryClient.invalidateQueries('sample');
+      queryClient.invalidateQueries(['sample']);
     },
   });
 };

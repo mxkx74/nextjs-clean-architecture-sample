@@ -1,8 +1,9 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
-import { ReactChild } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { setupServer } from 'msw/node';
+import { ReactNode } from 'react';
 import { useSampleQuery, useSampleMutation, type SampleData } from '../../../core/sampleApi/usecase';
-import { server } from '../../../mock/server';
+import { handlers } from '../../../mock/handlers';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,7 +14,9 @@ const queryClient = new QueryClient({
   },
 });
 
-const wrapper = ({ children }: { children: ReactChild }) => (
+const server = setupServer(...handlers);
+
+const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );
 
