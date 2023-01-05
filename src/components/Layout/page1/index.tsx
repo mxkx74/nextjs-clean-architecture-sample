@@ -13,25 +13,17 @@ export const Page1Layout: FC<Props> = ({ children }) => {
         <nav>
           <ul>
             <li>
-              <Link href="/home">
-                <a>HOME</a>
-              </Link>
+              <Link href="/home">HOME</Link>
             </li>
             <li>
-              <Link href="/page1">
-                <a>PAGE1</a>
-              </Link>
+              <Link href="/page1">PAGE1</Link>
               <nav>
                 <ul>
                   <li>
-                    <Link href="/page1/confirm">
-                      <a>CONFIRM</a>
-                    </Link>
+                    <Link href="/page1/confirm">CONFIRM</Link>
                   </li>
                   <li>
-                    <Link href="/page1/thunks">
-                      <a>THUNKS</a>
-                    </Link>
+                    <Link href="/page1/thunks">THUNKS</Link>
                   </li>
                 </ul>
               </nav>

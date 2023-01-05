@@ -13,14 +13,10 @@ export const DefaultLayout: FC<Props> = ({ children }) => {
         <nav>
           <ul>
             <li>
-              <Link href="/home">
-                <a>HOME</a>
-              </Link>
+              <Link href="/home">HOME</Link>
             </li>
             <li>
-              <Link href="/page1">
-                <a>PAGE1</a>
-              </Link>
+              <Link href="/page1">PAGE1</Link>
             </li>
           </ul>
         </nav>
