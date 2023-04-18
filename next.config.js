@@ -1,9 +1,10 @@
 module.exports = {
   swcMinify: true,
+  reactStrictMode: true,
   compiler: {
     styledComponents: true,
-    reactRemoveProperties: true,
-    removeConsole: true,
+    reactRemoveProperties: process.env.NODE_ENV === 'production' ? { properties: ['^data-testid$'] } : false,
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
   },
   trailingSlash: true,
   env: {
