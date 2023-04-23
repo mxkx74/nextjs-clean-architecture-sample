@@ -3,25 +3,28 @@ import { useQuery } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 import type { ApiQueryKeys } from '@/constant/path';
 
-type Props<T, E> = {
+type Props<
+  TQueryFnData = unknown,
+  TError = unknown,
+  TData = TQueryFnData, // selectを使用した際のreturn型
+> = {
   queryKey?: ApiQueryKeys;
   deps?: QueryKey;
-  options?: UseQueryOptions<T, AxiosError<E>>;
-  repository: QueryFunction<T>;
+  options?: UseQueryOptions<TQueryFnData, AxiosError<TError>, TData>;
+  repository: QueryFunction<TQueryFnData>;
 };
 
-export const useQueryWrapper = <T, E>({
+export const useQueryWrapper = <T, E, D>({
   queryKey,
   deps = [],
   options,
   repository,
-}: Props<T, E>) => {
-  const key = Array.isArray(deps) ? [queryKey, ...deps] : [queryKey];
+}: Props<T, E, D>) => {
   return useQuery(
-    key as QueryKey,
+    [queryKey, ...deps] as QueryKey,
     repository,
     {
-      useErrorBoundary: (error) => {
+      useErrorBoundary: (error: AxiosError) => {
         const status = error.response?.status;
         return !!(status && status >= 500);
       },
