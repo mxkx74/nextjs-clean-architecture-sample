@@ -10,8 +10,33 @@
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": ["@typescript-eslint", "jest", "strict-dependencies"],
   "rules": {
+    "strict-dependencies/strict-dependencies": [
+      "error",
+      [
+        {
+          "module": "src/core/**/data/*",
+          "allowReferenceFrom": ["src/core/**/index.ts"]
+        },
+        {
+          "module": "react",
+          "allowReferenceFrom": ["src/components", "src/pages", "src/hooks", "@types"]
+        },
+        {
+          "module": "next",
+          "allowReferenceFrom": ["src/components", "src/pages", "src/hooks", "@types"]
+        },
+        {
+          "module": "src/components/page/index.tsx",
+          "allowReferenceFrom": ["src/pages"],
+          "allowSameModule": false
+        }
+      ],
+      {
+        "resolveRelativeImport": true
+      }
+    ],
     "react/display-name": "off",
     "@next/next/no-img-element": "off",
     "react/react-in-jsx-scope": "off",
