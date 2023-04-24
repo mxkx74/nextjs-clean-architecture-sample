@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
+import { withQueryClient } from '@/components/HOC/withQueryClient';
 import { SampleRequestParams, sampleInteractor, samplePostHandler } from '@/core/sampleApi';
-import { withQueryClient } from '@/helper/HOC/withQueryClient';
 import { server } from '@/mock';
 
 
