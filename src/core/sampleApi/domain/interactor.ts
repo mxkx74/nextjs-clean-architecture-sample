@@ -4,7 +4,7 @@ import { queryClient } from '@/lib/queryClient';
 
 export const sampleInteractor = (repository: SampleRepository) => {
   return {
-    useQuery (id: number) {
+    useGet (id: number) {
       return useQueryWrapper({
         queryKey: 'sample',
         deps: [id],
@@ -15,7 +15,7 @@ export const sampleInteractor = (repository: SampleRepository) => {
       });
     },
 
-    useMutation () {
+    useCreate () {
       return useMutationWrapper({
         repository: (data: SampleRequestParams) => {
           return repository.post(sampleRequestMapper(data));

@@ -10,7 +10,7 @@ describe('mswを使ったテスト', () => {
 
   describe('query', () => {
     test('sampleEntityを取得', async () => {
-      const { result } = renderHook(() => sampleInteractor.useQuery(1), { wrapper });
+      const { result } = renderHook(() => sampleInteractor.useGet(1), { wrapper });
       await waitFor(() => {
         expect(result.current.data).toEqual({
           id: '1',
@@ -31,7 +31,7 @@ describe('mswを使ったテスト', () => {
     test('成功時はentityが返る', async () => {
       server.use(samplePostHandler(200));
 
-      const { result } = renderHook(() => sampleInteractor.useMutation(), { wrapper });
+      const { result } = renderHook(() => sampleInteractor.useCreate(), { wrapper });
       act(() =>{
         result.current.mutate(data);
       });

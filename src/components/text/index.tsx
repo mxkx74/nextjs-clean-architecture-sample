@@ -9,7 +9,7 @@ type Props = {
 type ComponentProps = ComponentPropsWithoutRef<'p'> & Props;
 
 const Text = memo<ComponentProps>(({ ...props }) => {
-  const { data } = sampleInteractor.useQuery(1);
+  const { data } = sampleInteractor.useGet(1);
 
   return <p {...props}>{data?.text}</p>;
 });
