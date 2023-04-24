@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { camelToSnake, snakeToCamel } from './string';
 
 type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
@@ -15,8 +14,8 @@ export type CamelToSnake<T extends object> = {
       ? CamelToSnake<U>[]
       : U[]
     : T[K] extends object
-    ? CamelToSnake<T[K]>
-    : T[K];
+      ? CamelToSnake<T[K]>
+      : T[K];
 };
 
 export type SnakeToCamel<T extends object> = {
@@ -25,8 +24,8 @@ export type SnakeToCamel<T extends object> = {
       ? SnakeToCamel<U>[]
       : U[]
     : T[K] extends object
-    ? SnakeToCamel<T[K]>
-    : T[K];
+      ? SnakeToCamel<T[K]>
+      : T[K];
 };
 
 export const deepSnakeToCamel = <T extends object>(data: T) => {
