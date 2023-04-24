@@ -30,24 +30,16 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
   return rest.post(path.sample(), (_, res, ctx) => {
     if (status === 403) {
-      console.log(403);
-
       return res(ctx.status(403));
     }
 
     if (status === 404) {
-      console.log(404);
-
       return res(ctx.status(404));
     }
 
     if (status === 500) {
-      console.log(500);
-
       return res(ctx.status(500));
     }
-    console.log(200);
-
 
     return res(
       ctx.status(200),
@@ -57,7 +49,6 @@ export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
         text: 'TOP PAGE',
       } as SampleEntity)
     );
-
   });
 };
 

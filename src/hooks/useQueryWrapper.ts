@@ -24,7 +24,7 @@ export const useQueryWrapper = <T, E, D>({
     [queryKey, ...deps] as QueryKey,
     repository,
     {
-      useErrorBoundary: (error: AxiosError) => {
+      useErrorBoundary: (error) => {
         const status = error.response?.status;
         return !!(status && status >= 500);
       },
