@@ -8,7 +8,7 @@ export const sampleInteractor = (repository: SampleRepository) => {
       return useQueryWrapper({
         queryKey: 'sample',
         deps: [id],
-        repository: () => repository.get(id),
+        fetcher: () => repository.get(id),
         options: {
           select: (data) => sampleResponseMapper(data)
         }
@@ -17,7 +17,7 @@ export const sampleInteractor = (repository: SampleRepository) => {
 
     useCreate () {
       return useMutationWrapper({
-        repository: (data: SampleRequestParams) => {
+        fetcher: (data: SampleRequestParams) => {
           return repository.post(sampleRequestMapper(data));
         },
         options: {

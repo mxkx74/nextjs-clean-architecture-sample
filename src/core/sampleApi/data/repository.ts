@@ -13,19 +13,13 @@ export const sampleRepository = (): SampleRepository => {
     async get(id: number) {
       return await client
         .get<SampleEntity>(endpoint, { params: { id } })
-        .then(({ data }) => sampleSchema.parse(deepSnakeToCamel(data)))
-        .catch((reason: AxiosError<Error>) => {
-          throw reason;
-        });
+        .then(({data}) => sampleSchema.parse(deepSnakeToCamel(data)));
     },
 
     async post(data: SampleRequestModel) {
       return await client
         .post<SampleEntity>(endpoint, data)
-        .then(({data}) => sampleSchema.parse(deepSnakeToCamel(data)))
-        .catch((reason: AxiosError<Error>) => {
-          throw reason;
-        });
+        .then(({data}) => sampleSchema.parse(deepSnakeToCamel(data)));
     }
   };
 };

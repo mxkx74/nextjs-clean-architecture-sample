@@ -11,18 +11,18 @@ type Props<
   queryKey?: ApiQueryKeys;
   deps?: QueryKey;
   options?: UseQueryOptions<TQueryFnData, AxiosError<TError>, TData>;
-  repository: QueryFunction<TQueryFnData>;
+  fetcher: QueryFunction<TQueryFnData>;
 };
 
 export const useQueryWrapper = <T, E, D>({
   queryKey,
   deps = [],
   options,
-  repository,
+  fetcher,
 }: Props<T, E, D>) => {
   return useQuery(
     [queryKey, ...deps] as QueryKey,
-    repository,
+    fetcher,
     {
       useErrorBoundary: (error) => {
         const status = error.response?.status;
