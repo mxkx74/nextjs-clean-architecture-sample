@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import { SampleEntity, sampleSchema } from './entity';
-
+import { SampleEntity, sampleSchema } from '@/core/sampleApi';
 
 /**
  * repository
@@ -9,8 +8,8 @@ import { SampleEntity, sampleSchema } from './entity';
  * @returns Promise<SampleEntity>
  */
 export type SampleRepository = {
-  get: (id: number) => Promise<SampleEntity>;
-  post: (data: SampleRequestModel) => Promise<SampleEntity>;
+  findById: (id: number) => Promise<SampleEntity>;
+  create: (data: SampleRequestModel) => Promise<SampleEntity>;
 }
 
 /**

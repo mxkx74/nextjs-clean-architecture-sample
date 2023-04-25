@@ -11,10 +11,10 @@ type Props<
   queryKey?: ApiQueryKeys;
   deps?: QueryKey;
   options?: UseQueryOptions<TQueryFnData, AxiosError<TError>, TData>;
-  fetcher: QueryFunction<TQueryFnData>;
+  fetcher: QueryFunction<TQueryFnData | TData, QueryKey>;
 };
 
-export const useQueryWrapper = <T, E, D>({
+export const useQueryWrapper = <T, E, D extends T>({
   queryKey,
   deps = [],
   options,
