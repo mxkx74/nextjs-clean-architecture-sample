@@ -1,4 +1,4 @@
-import { camelToSnake, snakeToCamel } from './string';
+import { camelToSnake, snakeToCamel } from '@/helper/string';
 
 type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
   ? `${T extends Capitalize<T> ? '_' : ''}${Lowercase<T>}${CamelToSnakeCase<U>}`

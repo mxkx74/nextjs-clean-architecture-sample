@@ -10,14 +10,31 @@
     "plugin:jest/recommended",
     "plugin:jest/style"
   ],
-  "plugins": ["@typescript-eslint", "jest", "strict-dependencies"],
+  "plugins": ["@typescript-eslint", "jest", "strict-dependencies", "no-relative-import-paths"],
   "rules": {
+    // 絶対パスを強制
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      {
+        "allowSameFolder": true,
+        "rootDir": "src",
+        "prefix": "@"
+      }
+    ],
+    // 循環参照の禁止
+    "import/no-cycle": "error",
+    // 依存関係の管理
     "strict-dependencies/strict-dependencies": [
       "error",
       [
         {
           "module": "src/core/**/data/*",
-          "allowReferenceFrom": ["src/core/**/index.ts"]
+          "allowReferenceFrom": ["src/core/**/index.ts", "src/core/**/adapter/*"]
+        },
+        {
+          "module": "src/core/**/domain/*",
+          "allowReferenceFrom": ["src/core/**/adapter/*", "src/core/**/data/*", "src/core/**/index.ts"],
+          "allowSameModule": true
         },
         {
           "module": "react",

@@ -1,7 +1,6 @@
-import { AxiosError } from 'axios';
-import { SampleEntity, sampleSchema } from '../domain/entity';
-import { SampleRepository, SampleRequestModel } from '../domain/usecase';
 import { ENDPOINT, path } from '@/constant/path';
+import { type SampleEntity, sampleSchema } from '@/core/sampleApi/domain/entity';
+import { type SampleRepository, type SampleRequestModel } from '@/core/sampleApi/domain/usecase';
 import { deepSnakeToCamel } from '@/helper/object';
 import { getFetchClient } from '@/lib/apiClient';
 
@@ -10,22 +9,14 @@ export const sampleRepository = (): SampleRepository => {
   const endpoint = path.sample();
 
   return {
-    async get(id: number) {
-      return await client
-        .get<SampleEntity>(endpoint, { params: { id } })
-        .then(({ data }) => sampleSchema.parse(deepSnakeToCamel(data)))
-        .catch((reason: AxiosError<Error>) => {
-          throw reason;
-        });
+    async findById(id: number) {
+      return client.get<SampleEntity>(endpoint, { params: { id } })
+        .then((response) => sampleSchema.parse(deepSnakeToCamel(response.data)));
     },
 
-    async post(data: SampleRequestModel) {
-      return await client
-        .post<SampleEntity>(endpoint, data)
-        .then(({data}) => sampleSchema.parse(deepSnakeToCamel(data)))
-        .catch((reason: AxiosError<Error>) => {
-          throw reason;
-        });
+    async create(data: SampleRequestModel) {
+      const { data: response } = await client.post<SampleEntity>(endpoint, data);
+      return sampleSchema.parse(deepSnakeToCamel(response));
     }
   };
 };

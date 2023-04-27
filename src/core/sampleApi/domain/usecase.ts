@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import { SampleEntity, sampleSchema } from './entity';
-
+import { type SampleEntity, sampleSchema } from './entity';
 
 /**
  * repository
@@ -9,8 +8,8 @@ import { SampleEntity, sampleSchema } from './entity';
  * @returns Promise<SampleEntity>
  */
 export type SampleRepository = {
-  get: (id: number) => Promise<SampleEntity>;
-  post: (data: SampleRequestModel) => Promise<SampleEntity>;
+  findById: (id: number) => Promise<SampleEntity>;
+  create: (data: SampleRequestModel) => Promise<SampleEntity>;
 }
 
 /**
@@ -38,16 +37,11 @@ export const sampleRequestMapper = (input: SampleRequestParams): SampleRequestMo
  * response model
  * @description entityをviewに渡す前に、必要に応じて変換する
  */
-export const responseModelSchema = z.object({
-  ...sampleSchema.shape,
-})
-  .transform(
-    (schema) => ({
-      ...schema,
-      id: String(schema.id),
-      text: schema.text ?? '',
-    })
-  );
+
+export const responseModelSchema = sampleSchema
+  .extend({
+    id: z.number().transform((val) => String(val)),
+  });
 
 export type SampleResponseModel = z.output<typeof responseModelSchema>;
 

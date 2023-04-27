@@ -1,5 +1,5 @@
 import { memo, ComponentPropsWithoutRef, ReactNode } from 'react';
-import { sampleInteractor } from '@/core/sampleApi';
+import { useGetSample } from '@/core/sampleApi';
 
 type Props = {
   children?: ReactNode;
@@ -9,7 +9,7 @@ type Props = {
 type ComponentProps = ComponentPropsWithoutRef<'p'> & Props;
 
 const Text = memo<ComponentProps>(({ ...props }) => {
-  const { data } = sampleInteractor.useGet(1);
+  const { data } = useGetSample(1);
 
   return <p {...props}>{data?.text}</p>;
 });

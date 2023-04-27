@@ -8,15 +8,15 @@ type Props<
   TVariables = void,
   TContext = unknown
 > = {
-  repository: MutationFunction<TData, TVariables>;
+  fetcher: MutationFunction<TData, TVariables>;
   options?: Exclude<UseMutationOptions<TData, AxiosError<TError>, TVariables, TContext>, 'useErrorBoundary'>;
 };
 
 export const useMutationWrapper = <D, E, V, C>({
-  repository,
+  fetcher,
   options,
 }: Props<D, E, V, C>) => {
-  return useMutation(repository, {
+  return useMutation(fetcher, {
     useErrorBoundary: (error) => {
       const status = error.response?.status;
       return !!(status && status >= 500);
