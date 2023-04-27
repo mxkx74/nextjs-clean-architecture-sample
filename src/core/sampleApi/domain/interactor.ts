@@ -1,15 +1,14 @@
-import { SampleRepository, SampleRequestParams, sampleRequestMapper, sampleResponseMapper } from '@/core/sampleApi';
+import { sampleRequestMapper, sampleResponseMapper , type SampleRequestParams, type SampleRepository } from './usecase';
 
 export const sampleInteractor = (repository: SampleRepository) => {
   return {
     async findById(id: number) {
-      const result = await repository.findById(id);
-      return sampleResponseMapper(result);
+      return repository.findById(id)
+        .then((data) => sampleResponseMapper(data));
     },
 
     async create(data: SampleRequestParams) {
-      const result = await repository.create(sampleRequestMapper(data));
-      return result;
+      return repository.create(sampleRequestMapper(data));
     }
   };
 };
