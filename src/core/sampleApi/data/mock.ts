@@ -1,6 +1,6 @@
 import { rest } from 'msw';
-import { type SampleEntity } from '../domain/entity';
 import { path } from '@/constant';
+import { type SampleEntity } from '@/core/sampleApi/domain/entity';
 
 export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
   return rest.get(path.sample(), (_, res, ctx) => {

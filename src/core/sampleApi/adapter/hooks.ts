@@ -1,6 +1,6 @@
-import { sampleRepository } from '../data/repository';
-import { sampleInteractor } from '../domain/interactor';
-import { type SampleRequestParams } from '../domain/usecase';
+import { sampleRepository } from '@/core/sampleApi/data/repository';
+import { sampleInteractor } from '@/core/sampleApi/domain/interactor';
+import { type SampleRequestParams } from '@/core/sampleApi/domain/usecase';
 import { useMutationWrapper, useQueryWrapper } from '@/hooks';
 import { queryClient } from '@/lib/queryClient';
 
