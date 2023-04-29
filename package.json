@@ -9,7 +9,7 @@
     "serve": "yarn export && serve ./out",
     "start": "next start",
     "lint": "run-p lint:*",
-    "lint:eslint": "next lint",
+    "lint:eslint": "next lint --fix",
     "lint:tsc": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watchAll",
