@@ -16,6 +16,7 @@ describe('mswを使ったテスト', () => {
           id: '1',
           title: 'page1',
           text: 'TOP PAGE',
+          mainText: 'sample text',
         });
       });
     });
@@ -41,6 +42,7 @@ describe('mswを使ったテスト', () => {
           id: 1,
           title: 'page1',
           text: 'TOP PAGE',
+          mainText: 'sample text',
         });
       });
     });
