@@ -1,8 +1,8 @@
-import { ENDPOINT, path } from '@/constant/path';
 import { type SampleEntity, sampleSchema } from '@/core/sampleApi/domain/entity';
 import { type SampleRepository, type SampleRequestModel } from '@/core/sampleApi/domain/usecase';
-import { deepSnakeToCamel } from '@/helper/object';
 import { getFetchClient } from '@/lib/apiClient';
+import { ENDPOINT, path } from '@/constant/path';
+import { deepSnakeToCamel } from '@/helper/object';
 
 export const sampleRepository = (): SampleRepository => {
   const client = getFetchClient(ENDPOINT);

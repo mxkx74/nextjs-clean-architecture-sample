@@ -85,7 +85,7 @@
     "import/order": [
       "warn",
       {
-        "groups": ["builtin", "external", "parent", "sibling", "index", "object", "type"],
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"], "index", "object", "type"],
         "pathGroups": [
           {
             "pattern": "{react,react-dom/**,react-router-dom}",
@@ -95,6 +95,16 @@
           {
             "pattern": "{next,next/**}",
             "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "@/core/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/lib/**",
+            "group": "internal",
             "position": "before"
           },
           {
