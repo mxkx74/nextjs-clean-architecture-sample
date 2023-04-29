@@ -18,7 +18,8 @@ export type SampleRepository = {
 export const requestModelSchema = z.object({
   id: z.string(),
   text: z.string().optional(),
-  title: z.string().optional()
+  title: z.string().optional(),
+  mainText: z.string().optional(),
 }).transform((schema) => ({
   ...schema,
   id: parseInt(schema.id),
