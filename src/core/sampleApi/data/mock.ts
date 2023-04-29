@@ -18,11 +18,11 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(status),
-      ctx.json({
+      ctx.json<SampleEntity>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',
-      } as SampleEntity)
+      })
     );
   });
 };
@@ -43,11 +43,11 @@ export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(200),
-      ctx.json({
+      ctx.json<SampleEntity>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',
-      } as SampleEntity)
+      })
     );
   });
 };

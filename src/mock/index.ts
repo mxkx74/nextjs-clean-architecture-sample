@@ -5,10 +5,14 @@ import * as Handlers from '@/mock/handlers';
 if (process.env.NODE_ENV === 'development') {
   if (typeof window === 'undefined') {
     const server = setupServer(...Handlers.handlers);
-    server.listen();
+    server.listen({
+      onUnhandledRequest: 'bypass',
+    });
   } else {
     const worker = setupWorker(...Handlers.handlers);
-    worker.start();
+    worker.start({
+      onUnhandledRequest: 'bypass',
+    });
   }
 }
 
