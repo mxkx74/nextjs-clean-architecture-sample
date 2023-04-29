@@ -1,8 +1,8 @@
 import { sampleRepository } from '@/core/sampleApi/data/repository';
 import { sampleInteractor } from '@/core/sampleApi/domain/interactor';
 import { type SampleRequestParams } from '@/core/sampleApi/domain/usecase';
-import { useMutationWrapper, useQueryWrapper } from '@/hooks';
 import { queryClient } from '@/lib/queryClient';
+import { useMutationWrapper, useQueryWrapper } from '@/hooks';
 
 const interactor = sampleInteractor(sampleRepository());
 

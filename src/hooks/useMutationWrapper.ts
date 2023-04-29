@@ -1,5 +1,5 @@
-import type { MutationFunction, UseMutationOptions } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
+import type { MutationFunction, UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 
 type Props<

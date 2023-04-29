@@ -10,4 +10,12 @@ module.exports = {
   env: {
     NEXT_PUBLIC_API_MOCKING: 'enabled',
   },
+  // ポーリングの頻度を下げてdevサーバーの負荷を下げる
+  webpack: (config) => {
+    config.watchOptions = {
+      poll: 5000,
+      aggregateTimeout: 300,
+    };
+    return config;
+  },
 };

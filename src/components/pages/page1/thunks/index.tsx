@@ -1,6 +1,6 @@
 import type { NextPageWithLayout } from 'next';
-import { Component } from './Component';
 import Page1 from '@/components/pages/page1';
+import { Component } from './Component';
 
 const Thunks: NextPageWithLayout = () => <Component />;
 

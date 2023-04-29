@@ -1,5 +1,5 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { FC, ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient({
   logger: {

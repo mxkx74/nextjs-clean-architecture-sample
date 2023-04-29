@@ -38,10 +38,9 @@ export const sampleRequestMapper = (input: SampleRequestParams): SampleRequestMo
  * @description entityをviewに渡す前に、必要に応じて変換する
  */
 
-export const responseModelSchema = sampleSchema
-  .extend({
-    id: z.number().transform((val) => String(val)),
-  });
+export const responseModelSchema = sampleSchema.extend({
+  id: z.number().transform((val) => String(val)),
+});
 
 export type SampleResponseModel = z.output<typeof responseModelSchema>;
 
