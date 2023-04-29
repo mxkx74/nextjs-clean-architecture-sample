@@ -1,6 +1,6 @@
+import { FC, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { FC, Suspense } from 'react';
 
 const Text = dynamic(() => import('../../text/'), { ssr: false });
 
