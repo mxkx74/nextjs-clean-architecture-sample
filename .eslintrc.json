@@ -8,8 +8,17 @@
     "prettier",
     "plugin:storybook/recommended",
     "plugin:jest/recommended",
-    "plugin:jest/style"
+    "plugin:jest/style",
+    "plugin:jsx-a11y/strict"
   ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
   "plugins": ["@typescript-eslint", "jest", "strict-dependencies", "no-relative-import-paths"],
   "rules": {
     // 絶対パスを強制
