@@ -1,2 +1,2 @@
-export * from '@/hooks/useQueryWrapper';
-export * from '@/hooks/useMutationWrapper';
+export * from './useQueryWrapper';
+export * from './useMutationWrapper';
