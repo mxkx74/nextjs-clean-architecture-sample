@@ -19,7 +19,7 @@
       "modules": true
     }
   },
-  "plugins": ["@typescript-eslint", "jest", "strict-dependencies", "no-relative-import-paths"],
+  "plugins": ["@typescript-eslint", "jest", "strict-dependencies", "no-relative-import-paths", "unused-imports"],
   "rules": {
     // 絶対パスを強制
     "no-relative-import-paths/no-relative-import-paths": [
@@ -91,6 +91,12 @@
     "semi": ["error", "always"],
     "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
     "import/order": [
       "warn",
       {
