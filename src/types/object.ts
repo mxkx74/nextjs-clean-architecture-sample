@@ -19,3 +19,20 @@ export type DeepSnakeToCamelCase<T extends object> = {
       ? DeepSnakeToCamelCase<T[K]>
       : T[K];
 };
+
+/**
+ * @description
+ * オブジェクトのキーからパスを取得する
+ * @example
+ * type Obj = {
+ *  a: {
+ *    b: {
+ *      c: string;
+ *    };
+ *   };
+ * };
+ *  type Test = KeyPath<Obj>; // 'a' | 'a.b' | 'a.b.c'
+ */
+export type KeyPath<T extends object, D extends string = ''> = {
+  [K in keyof T]: `${D}${Exclude<K, symbol>}${'' | (T[K] extends object ? KeyPath<T[K], '.'> : '')}`
+}[keyof T]
