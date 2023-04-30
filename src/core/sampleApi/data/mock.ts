@@ -1,10 +1,10 @@
 import { rest } from 'msw';
 import { type SampleEntity } from '@/core/sampleApi/domain/entity';
-import { path } from '@/constant';
-import { CamelToSnake } from '@/helper/object';
+import { apiPath } from '@/constant';
+import { type DeepCamelToSnakeCase } from '@/types';
 
 export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
-  return rest.get(path.sample(), (_, res, ctx) => {
+  return rest.get(apiPath.sample.get(), (_, res, ctx) => {
     if (status === 403) {
       return res(ctx.status(403));
     }
@@ -19,7 +19,7 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(status),
-      ctx.json<CamelToSnake<SampleEntity>>({
+      ctx.json<DeepCamelToSnakeCase<SampleEntity>>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',
@@ -30,7 +30,7 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 };
 
 export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
-  return rest.post(path.sample(), (_, res, ctx) => {
+  return rest.post(apiPath.sample.post(), (_, res, ctx) => {
     if (status === 403) {
       return res(ctx.status(403));
     }
@@ -45,7 +45,7 @@ export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(200),
-      ctx.json<CamelToSnake<SampleEntity>>({
+      ctx.json<DeepCamelToSnakeCase<SampleEntity>>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',

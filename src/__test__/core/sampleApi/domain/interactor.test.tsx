@@ -1,10 +1,10 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { type SampleRequestParams, samplePostHandler, useCreateSample, useGetSample} from '@/core/sampleApi';
-import { withQueryClient } from '@/components/context/withQueryClient';
+import { WithQueryClient } from '@/components/context/WithQueryClient';
 import { server } from '@/mock';
 
 
-const wrapper = withQueryClient();
+const wrapper = WithQueryClient();
 
 describe('mswを使ったテスト', () => {
 

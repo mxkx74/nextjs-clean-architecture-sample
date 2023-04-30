@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { deepCamelToSnake, deepSnakeToCamel } from '@/helper';
+import { deepCamelToSnakeCase, deepSnakeToCamelCase } from '@/helper';
 
 type Config = {
   baseURL: string,
@@ -26,7 +26,7 @@ const createClient = ({baseURL, camelCase, csrfToken}: Config) => {
         if((data !== null && typeof data !== 'undefined')) {
           return {
             ...response,
-            data: deepSnakeToCamel(data)
+            data: deepSnakeToCamelCase(data)
           };
         }
         return response;
@@ -40,7 +40,7 @@ const createClient = ({baseURL, camelCase, csrfToken}: Config) => {
         if((data !== null && typeof data !== 'undefined')) {
           return {
             ...config,
-            data: deepCamelToSnake(data)
+            data: deepCamelToSnakeCase(data)
           };
         }
         return config;

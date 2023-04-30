@@ -8,7 +8,7 @@ const interactor = sampleInteractor(sampleRepository());
 
 export const useGetSample = (id: number) => {
   return useQueryWrapper({
-    queryKey: 'sample',
+    queryKey: 'sample.get',
     deps: [id],
     fetcher: () => interactor.findById(id)
   });
