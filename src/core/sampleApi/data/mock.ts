@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 import { type SampleEntity } from '@/core/sampleApi/domain/entity';
 import { apiPath } from '@/constant';
-import { CamelToSnake } from '@/helper/object';
+import { type DeepCamelToSnakeCase } from '@/types';
 
 export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
   return rest.get(apiPath.sample.get(), (_, res, ctx) => {
@@ -19,7 +19,7 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(status),
-      ctx.json<CamelToSnake<SampleEntity>>({
+      ctx.json<DeepCamelToSnakeCase<SampleEntity>>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',
@@ -45,7 +45,7 @@ export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 
     return res(
       ctx.status(200),
-      ctx.json<CamelToSnake<SampleEntity>>({
+      ctx.json<DeepCamelToSnakeCase<SampleEntity>>({
         id: 1,
         title: 'page1',
         text: 'TOP PAGE',

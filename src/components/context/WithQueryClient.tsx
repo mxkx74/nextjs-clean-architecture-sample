@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-export const withQueryClient = (component?: ReactNode, _queryClient = queryClient) => {
+export const WithQueryClient = (component?: ReactNode, _queryClient = queryClient) => {
   const Wrapper: FC<{ children?: ReactNode }> = ({ children }) => {
     return (
       <QueryClientProvider client={_queryClient}>{children}</QueryClientProvider>
