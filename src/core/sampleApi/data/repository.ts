@@ -1,12 +1,12 @@
 import { type SampleEntity, sampleSchema } from '@/core/sampleApi/domain/entity';
 import { type SampleRepository, type SampleRequestModel } from '@/core/sampleApi/domain/usecase';
 import { getFetchClient } from '@/lib/apiClient';
-import { ENDPOINT, path } from '@/constant/path';
+import { ENDPOINT, apiPath } from '@/constant/path';
 
 
 export const sampleRepository = (): SampleRepository => {
   const client = getFetchClient({ baseURL: ENDPOINT, camelCase: true});
-  const resource = path.sample();
+  const resource = apiPath.sample.get();
 
   return {
     async findById(id: number) {

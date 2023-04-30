@@ -1,11 +1,11 @@
 import { waitFor } from '@testing-library/react';
 import { SampleEntity} from '@/core/sampleApi';
-import { ENDPOINT, path } from '@/constant';
+import { ENDPOINT, apiPath } from '@/constant';
 import { getFetchClient } from '@/lib';
 
 describe('apiClientのテスト', () => {
   const fetcher = getFetchClient({ baseURL: ENDPOINT, camelCase: true });
-  const resource = path.sample();
+  const resource = apiPath.sample.get();
 
   describe('get', () => {
     test('responseがsnakeCaseからcamelCaseに変換される', async () => {

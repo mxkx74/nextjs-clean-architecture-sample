@@ -1,7 +1,12 @@
+import { ObjectPath } from '@/types';
+
 export const ENDPOINT = 'http://localhost:3000/api';
 
-export const path = {
-  sample: () => `${ENDPOINT}/sample`,
+export const apiPath = {
+  sample: {
+    get: () => `${ENDPOINT}/sample`,
+    post: () => `${ENDPOINT}/sample`,
+  },
 };
 
-export type ApiQueryKeys = keyof typeof path;
+export type ApiQueryKeys = Exclude<ObjectPath<typeof apiPath>, keyof typeof apiPath>;
