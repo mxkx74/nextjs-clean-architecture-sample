@@ -1,40 +1,13 @@
-import { camelToSnake, snakeToCamel } from '@/helper/string';
+import { DeepCamelToSnakeCase, DeepSnakeToCamelCase } from '@/types';
+import { camelToSnake, snakeToCamel } from './string';
 
-type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
-  ? `${T extends Capitalize<T> ? '_' : ''}${Lowercase<T>}${CamelToSnakeCase<U>}`
-  : S;
-
-type SnakeToCamelCase<T extends string> = T extends `${infer R}_${infer U}`
-  ? `${R}${Capitalize<SnakeToCamelCase<U>>}`
-  : T;
-
-export type CamelToSnake<T extends object> = {
-  [K in keyof T as `${CamelToSnakeCase<string & K>}`]: T[K] extends Array<infer U>
-    ? U extends object
-      ? CamelToSnake<U>[]
-      : U[]
-    : T[K] extends object
-      ? CamelToSnake<T[K]>
-      : T[K];
-};
-
-export type SnakeToCamel<T extends object> = {
-  [K in keyof T as `${SnakeToCamelCase<string & K>}`]: T[K] extends Array<infer U>
-    ? U extends object
-      ? SnakeToCamel<U>[]
-      : U[]
-    : T[K] extends object
-      ? SnakeToCamel<T[K]>
-      : T[K];
-};
-
-export const deepSnakeToCamel = <T extends object>(data: T) => {
+export const deepSnakeToCamelCase = <T extends object>(data: T) => {
   return Object.entries(data).reduce((acc, current) => {
     const [key, value] = current;
 
     if (Array.isArray(value)) {
-      const list: SnakeToCamel<T>[] = value.map((item) => {
-        return typeof item === 'object' && item !== null && !Array.isArray(item) ? deepSnakeToCamel(item) : item;
+      const list: DeepSnakeToCamelCase<T>[] = value.map((item) => {
+        return typeof item === 'object' && item !== null && !Array.isArray(item) ? deepSnakeToCamelCase(item) : item;
       });
 
       return {
@@ -44,7 +17,7 @@ export const deepSnakeToCamel = <T extends object>(data: T) => {
     }
 
     if (value !== null && typeof value === 'object') {
-      const nested: SnakeToCamel<T> = deepSnakeToCamel(value);
+      const nested: DeepSnakeToCamelCase<T> = deepSnakeToCamelCase(value);
       return {
         ...acc,
         [snakeToCamel(key)]: nested,
@@ -55,16 +28,16 @@ export const deepSnakeToCamel = <T extends object>(data: T) => {
       ...acc,
       [snakeToCamel(key)]: value,
     };
-  }, {} as SnakeToCamel<T>);
+  }, {} as DeepSnakeToCamelCase<T>);
 };
 
-export const deepCamelToSnake = <T extends object>(data: T) => {
+export const deepCamelToSnakeCase = <T extends object>(data: T) => {
   return Object.entries(data).reduce((acc, current) => {
     const [key, value] = current;
 
     if (Array.isArray(value)) {
-      const list: CamelToSnake<T>[] = value.map((item) => {
-        return typeof item === 'object' && item !== null && !Array.isArray(item) ? deepCamelToSnake(item) : item;
+      const list: DeepCamelToSnakeCase<T>[] = value.map((item) => {
+        return typeof item === 'object' && item !== null && !Array.isArray(item) ? deepCamelToSnakeCase(item) : item;
       });
 
       return {
@@ -74,7 +47,7 @@ export const deepCamelToSnake = <T extends object>(data: T) => {
     }
 
     if (value !== null && typeof value === 'object') {
-      const nested: CamelToSnake<T> = deepCamelToSnake(value);
+      const nested: DeepCamelToSnakeCase<T> = deepCamelToSnakeCase(value);
       return {
         ...acc,
         [camelToSnake(key)]: nested,
@@ -85,7 +58,7 @@ export const deepCamelToSnake = <T extends object>(data: T) => {
       ...acc,
       [camelToSnake(key)]: value,
     };
-  }, {} as CamelToSnake<T>);
+  }, {} as DeepCamelToSnakeCase<T>);
 };
 
 export const removeNullableProperty = <T extends object>(obj: T) =>
