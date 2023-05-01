@@ -9,7 +9,7 @@ type Props<
   TContext = unknown
 > = {
   fetcher: MutationFunction<TData, TVariables>;
-  options?: Exclude<UseMutationOptions<TData, AxiosError<TError>, TVariables, TContext>, 'useErrorBoundary'>;
+  options?: UseMutationOptions<TData, AxiosError<TError>, TVariables, TContext>;
 };
 
 export const useMutationWrapper = <D, E, V, C>({
