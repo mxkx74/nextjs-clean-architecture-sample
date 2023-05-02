@@ -6,8 +6,8 @@ export type DeepCamelToSnakeCase<T extends object> = {
       ? DeepCamelToSnakeCase<U>[]
       : U[]
     : T[K] extends object
-      ? DeepCamelToSnakeCase<T[K]>
-      : T[K];
+    ? DeepCamelToSnakeCase<T[K]>
+    : T[K];
 };
 
 export type DeepSnakeToCamelCase<T extends object> = {
@@ -16,8 +16,8 @@ export type DeepSnakeToCamelCase<T extends object> = {
       ? DeepSnakeToCamelCase<U>[]
       : U[]
     : T[K] extends object
-      ? DeepSnakeToCamelCase<T[K]>
-      : T[K];
+    ? DeepSnakeToCamelCase<T[K]>
+    : T[K];
 };
 
 /**
@@ -29,10 +29,14 @@ export type DeepSnakeToCamelCase<T extends object> = {
  *    b: {
  *      c: string;
  *    };
+ *   d: string;
  *   };
  * };
- *  type Test = KeyPath<Obj>; // 'a' | 'a.b' | 'a.b.c'
+ *  type Test = KeyPath<Obj>; // 'a.b.c' | a.d'
  */
-export type KeyPath<T extends object, D extends string = ''> = {
-  [K in keyof T]: `${D}${Exclude<K, symbol>}${'' | (T[K] extends object ? KeyPath<T[K], '.'> : '')}`
-}[keyof T]
+
+export type KeyPath<T extends Record<string, unknown>, K = keyof T> = K extends string
+  ? T[K] extends Record<string, unknown>
+    ? `${K}.${KeyPath<T[K]>}`
+    : K
+  : never;
