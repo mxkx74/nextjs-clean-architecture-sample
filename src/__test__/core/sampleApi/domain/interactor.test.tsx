@@ -1,13 +1,11 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { type SampleRequestParams, samplePostHandler, useCreateSample, useGetSample} from '@/core/sampleApi';
+import { type SampleRequestParams, samplePostHandler, useCreateSample, useGetSample } from '@/core/sampleApi';
 import { WithQueryClient } from '@/components/context/WithQueryClient';
 import { server } from '@/mock';
-
 
 const wrapper = WithQueryClient();
 
 describe('mswを使ったテスト', () => {
-
   describe('query', () => {
     test('sampleEntityを取得', async () => {
       const { result } = renderHook(() => useGetSample(1), { wrapper });
@@ -33,7 +31,7 @@ describe('mswを使ったテスト', () => {
       server.use(samplePostHandler(200));
 
       const { result } = renderHook(() => useCreateSample(), { wrapper });
-      act(() =>{
+      act(() => {
         result.current.mutate(data);
       });
 

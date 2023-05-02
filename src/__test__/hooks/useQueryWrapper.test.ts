@@ -8,13 +8,13 @@ describe('useQueryWrapper', () => {
   const wrapper = WithQueryClient();
 
   test('keyとdepsを結合してqueryKeyとして使う', async () => {
-    const Key: ApiQueryKeys = 'sample.get';
+    const Key: ApiQueryKeys = 'sample.index';
     const deps = [1];
     const options = { useErrorBoundary: false };
     const fetcher = jest.fn();
     const spyUseQuery = jest.spyOn(Query, 'useQuery');
 
     renderHook(() => useQueryWrapper({ queryKey: Key, deps, options, fetcher }), { wrapper });
-    expect(spyUseQuery).toHaveBeenCalledWith([Key, ...deps], fetcher, options );
+    expect(spyUseQuery).toHaveBeenCalledWith([Key, ...deps], fetcher, options);
   });
 });
