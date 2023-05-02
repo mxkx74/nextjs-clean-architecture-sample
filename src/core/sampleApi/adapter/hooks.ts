@@ -8,9 +8,9 @@ const interactor = sampleInteractor(sampleRepository());
 
 export const useGetSample = (id: number) => {
   return useQueryWrapper({
-    queryKey: 'sample.get',
+    queryKey: 'sample.index',
     deps: [id],
-    fetcher: () => interactor.findById(id)
+    fetcher: () => interactor.findById(id),
   });
 };
 
@@ -20,7 +20,7 @@ export const useCreateSample = () => {
     options: {
       onSettled: () => {
         queryClient.invalidateQueries(['sample']);
-      }
-    }
+      },
+    },
   });
 };

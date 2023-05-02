@@ -3,10 +3,9 @@ import { type SampleRepository, type SampleRequestModel } from '@/core/sampleApi
 import { getFetchClient } from '@/lib/apiClient';
 import { ENDPOINT, apiPath } from '@/constant/path';
 
-
 export const sampleRepository = (): SampleRepository => {
-  const client = getFetchClient({ baseURL: ENDPOINT, camelCase: true});
-  const resource = apiPath.sample.get();
+  const client = getFetchClient({ baseURL: ENDPOINT, camelCase: true });
+  const resource = apiPath.sample.index();
 
   return {
     async findById(id: number) {
@@ -17,6 +16,6 @@ export const sampleRepository = (): SampleRepository => {
     async create(data: SampleRequestModel) {
       const response = await client.post<SampleEntity>(resource, data);
       return sampleSchema.parse(response.data);
-    }
+    },
   };
 };

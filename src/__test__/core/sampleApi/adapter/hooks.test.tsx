@@ -3,7 +3,6 @@ import { useCreateSample, useGetSample } from '@/core/sampleApi';
 import { WithQueryClient } from '@/components/context/WithQueryClient';
 import { queryClient } from '@/lib';
 
-
 describe('sampleApiのadapterのtest', () => {
   const wrapper = WithQueryClient();
   const sample = {
@@ -24,7 +23,7 @@ describe('sampleApiのadapterのtest', () => {
 
   describe('useCreateSample', () => {
     test('responseのidはnumber', async () => {
-      const { result } = renderHook(() => useCreateSample(), { wrapper});
+      const { result } = renderHook(() => useCreateSample(), { wrapper });
       act(() => {
         result.current.mutateAsync(sample);
       });
@@ -35,7 +34,7 @@ describe('sampleApiのadapterのtest', () => {
 
     test('成功時invalidateQueriesがcallされる', async () => {
       const resetQueriesSpy = jest.spyOn(queryClient, 'invalidateQueries');
-      const { result } = renderHook(() => useCreateSample(), { wrapper});
+      const { result } = renderHook(() => useCreateSample(), { wrapper });
       act(() => {
         result.current.mutateAsync(sample);
       });

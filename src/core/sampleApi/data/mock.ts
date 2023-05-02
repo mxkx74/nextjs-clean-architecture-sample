@@ -4,7 +4,7 @@ import { apiPath } from '@/constant';
 import { type DeepCamelToSnakeCase } from '@/types';
 
 export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
-  return rest.get(apiPath.sample.get(), (_, res, ctx) => {
+  return rest.get(apiPath.sample.index(), (_, res, ctx) => {
     if (status === 403) {
       return res(ctx.status(403));
     }
@@ -30,7 +30,7 @@ export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
 };
 
 export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
-  return rest.post(apiPath.sample.post(), (_, res, ctx) => {
+  return rest.post(apiPath.sample.update(), (_, res, ctx) => {
     if (status === 403) {
       return res(ctx.status(403));
     }
@@ -54,4 +54,3 @@ export const samplePostHandler = (status: 200 | 403 | 404 | 500 = 200) => {
     );
   });
 };
-

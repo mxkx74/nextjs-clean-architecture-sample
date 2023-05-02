@@ -4,9 +4,10 @@ export const ENDPOINT = 'http://localhost:3000/api';
 
 export const apiPath = {
   sample: {
-    get: () => `${ENDPOINT}/sample`,
-    post: () => `${ENDPOINT}/sample`,
+    index: () => `${ENDPOINT}/sample`,
+    update: () => `${ENDPOINT}/sample`,
   },
 };
 
-export type ApiQueryKeys = Exclude<KeyPath<typeof apiPath>, keyof typeof apiPath>;
+// useQuery用のユニークなqueryKeyを生成する
+export type ApiQueryKeys = KeyPath<typeof apiPath>;
