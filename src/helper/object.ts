@@ -60,8 +60,3 @@ export const deepCamelToSnakeCase = <T extends object>(data: T) => {
     };
   }, {} as DeepCamelToSnakeCase<T>);
 };
-
-export const removeNullableProperty = <T extends object>(obj: T) =>
-  Object.fromEntries(Object.entries(obj).filter(([, v]) => v != null)) as {
-    [P in keyof T as T[P] extends NonNullable<T[P]> ? P : never]: T[P];
-  };
