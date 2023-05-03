@@ -1,5 +1,5 @@
-import { setValue } from '@/components/context/global/action';
-import { reducer, initialState } from '@/components/context/global/reducer';
+import { setValue } from '@/component/context/global/action';
+import { reducer, initialState } from '@/component/context/global/reducer';
 
 describe('global reducerのテスト', () => {
   test('valueをセットできる', () => {

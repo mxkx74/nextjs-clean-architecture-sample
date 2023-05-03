@@ -29,24 +29,24 @@
       "error",
       [
         {
-          "module": "src/core/**/data/*",
-          "allowReferenceFrom": ["src/core/**/index.ts", "src/core/**/adapter/*", "src/__test__/**/*"]
+          "module": "src/feature/**/data/*",
+          "allowReferenceFrom": ["src/feature/**/index.ts", "src/feature/**/adapter/*", "src/__test__/**/*"]
         },
         {
-          "module": "src/core/**/domain/*",
-          "allowReferenceFrom": ["src/core/**/adapter/*", "src/core/**/data/*", "src/core/**/index.ts"],
+          "module": "src/feature/**/domain/*",
+          "allowReferenceFrom": ["src/feature/**/adapter/*", "src/feature/**/data/*", "src/feature/**/index.ts"],
           "allowSameModule": true
         },
         {
           "module": "react",
-          "allowReferenceFrom": ["src/components", "src/pages", "src/hooks", "@types"]
+          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "@types"]
         },
         {
           "module": "next",
-          "allowReferenceFrom": ["src/components", "src/pages", "src/hooks", "@types"]
+          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "@types"]
         },
         {
-          "module": "src/components/page/index.tsx",
+          "module": "src/component/page/index.tsx",
           "allowReferenceFrom": ["src/pages"],
           "allowSameModule": false
         }
@@ -97,7 +97,7 @@
             "position": "before"
           },
           {
-            "pattern": "@/core/**",
+            "pattern": "@/feature/**",
             "group": "internal",
             "position": "before"
           },

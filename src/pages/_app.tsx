@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import type { AppPropsWithLayout } from 'next/app';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient';
-import { GlobalContextProvider } from '@/components/context/global/GlobalProvider';
-import { DefaultLayout } from '@/components/layout';
+import { GlobalContextProvider } from '@/component/context/global/GlobalProvider';
+import { DefaultLayout } from '@/component/layout';
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   require('../mock');

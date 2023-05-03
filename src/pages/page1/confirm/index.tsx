@@ -1,1 +1,1 @@
-export { default } from '@/components/pages/page1/confirm/page';
+export { default } from '@/component/pages/page1/confirm/page';
