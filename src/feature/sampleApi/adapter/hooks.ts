@@ -1,6 +1,6 @@
-import { sampleRepository } from '@/feature/sampleApi/data/repository';
 import { sampleInteractor } from '@/feature/sampleApi/domain/interactor';
 import { type SampleRequestParams } from '@/feature/sampleApi/domain/usecase';
+import { sampleRepository } from '@/feature/sampleApi/infrastructure/repository';
 import { queryClient } from '@/lib/queryClient';
 import { useMutationWrapper, useQueryWrapper } from '@/hooks';
 
