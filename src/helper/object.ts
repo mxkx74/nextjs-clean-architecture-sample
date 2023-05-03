@@ -1,4 +1,4 @@
-import { DeepCamelToSnakeCase, DeepSnakeToCamelCase } from '@/types';
+import { DeepCamelToSnakeCase, DeepSnakeToCamelCase } from '@/type';
 import { camelToSnake, snakeToCamel } from './string';
 
 export const deepSnakeToCamelCase = <T extends object>(data: T) => {

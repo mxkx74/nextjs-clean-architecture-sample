@@ -1,7 +1,7 @@
 import * as Query from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import { AxiosError } from 'axios';
-import { WithQueryClient } from '@/components/context/WithQueryClient';
+import { WithQueryClient } from '@/component/context/WithQueryClient';
 import { useQueryWrapper } from '@/hooks';
 
 describe('useQueryWrapper', () => {

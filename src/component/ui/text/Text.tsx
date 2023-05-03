@@ -1,5 +1,5 @@
 import { memo, ComponentPropsWithoutRef, ReactNode } from 'react';
-import { useGetSample } from '@/core/sampleApi';
+import { useGetSample } from '@/feature/sampleApi';
 
 type Props = {
   children?: ReactNode;

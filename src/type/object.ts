@@ -1,4 +1,4 @@
-import type { CamelToSnakeCase, SnakeToCamelCase } from '@/types/string';
+import type { CamelToSnakeCase, SnakeToCamelCase } from '@/type/string';
 
 export type DeepCamelToSnakeCase<T extends object> = {
   [K in keyof T as `${CamelToSnakeCase<string & K>}`]: T[K] extends Array<infer U>

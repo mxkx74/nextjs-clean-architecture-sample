@@ -1,4 +1,4 @@
-import { KeyPath } from '@/types';
+import { KeyPath } from '@/type';
 
 export const ENDPOINT = 'http://localhost:3000/api';
 

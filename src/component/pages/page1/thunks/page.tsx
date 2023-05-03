@@ -1,22 +1,22 @@
 import type { NextPageWithLayout } from 'next';
 import Head from 'next/head';
-import Page1 from '@/components/pages/page1/page';
+import Page1 from '@/component/pages/page1/page';
 
 type Props = {
   title?: string;
 };
 
-const Confirm: NextPageWithLayout = ({ title }: Props) => {
+const Thunks: NextPageWithLayout = ({ title }: Props) => {
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <p>CONFIRM</p>
+      <p>THUNKS</p>
     </>
   );
 };
 
-Confirm.getLayout = Page1.getLayout;
+Thunks.getLayout = Page1.getLayout;
 
-export default Confirm;
+export default Thunks;
