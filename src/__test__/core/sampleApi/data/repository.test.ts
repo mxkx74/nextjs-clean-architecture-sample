@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
-import { sampleGetHandler, samplePostHandler } from '@/core/sampleApi';
-import { sampleRepository } from '@/core/sampleApi/data/repository';
+import { sampleGetHandler, samplePostHandler } from '@/feature/sampleApi';
+import { sampleRepository } from '@/feature/sampleApi/data/repository';
 import { server } from '@/mock';
 
 describe('repositoryのtest', () => {

@@ -1,6 +1,3 @@
-import { sampleGetHandler, samplePostHandler } from '@/core/sampleApi';
+import { sampleGetHandler, samplePostHandler } from '@/feature/sampleApi';
 
-export const handlers = [
-  sampleGetHandler(),
-  samplePostHandler(),
-];
+export const handlers = [sampleGetHandler(), samplePostHandler()];

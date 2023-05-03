@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { useCreateSample, useGetSample } from '@/core/sampleApi';
 import { WithQueryClient } from '@/components/context/WithQueryClient';
+import { useCreateSample, useGetSample } from '@/feature/sampleApi';
 import { queryClient } from '@/lib';
 
 describe('sampleApiのadapterのtest', () => {

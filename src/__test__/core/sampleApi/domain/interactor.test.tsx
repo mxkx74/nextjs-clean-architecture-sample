@@ -1,10 +1,6 @@
 import { AxiosError } from 'axios';
-import {
-  sampleGetHandler,
-  sampleInteractor,
-  samplePostHandler,
-} from '@/core/sampleApi';
-import { sampleRepository } from '@/core/sampleApi/data/repository';
+import { sampleGetHandler, sampleInteractor, samplePostHandler } from '@/feature/sampleApi';
+import { sampleRepository } from '@/feature/sampleApi/data/repository';
 import { server } from '@/mock';
 
 describe('interactorのtest', () => {

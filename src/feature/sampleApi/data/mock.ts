@@ -1,6 +1,6 @@
 import { rest } from 'msw';
-import { type SampleEntity } from '@/core/sampleApi/domain/entity';
 import { apiPath } from '@/constant';
+import { type SampleEntity } from '@/feature/sampleApi/domain/entity';
 import { type DeepCamelToSnakeCase } from '@/types';
 
 export const sampleGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
