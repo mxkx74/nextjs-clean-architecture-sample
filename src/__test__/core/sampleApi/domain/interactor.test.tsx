@@ -1,48 +1,47 @@
-import { act, renderHook, waitFor } from '@testing-library/react';
-import { type SampleRequestParams, samplePostHandler, useCreateSample, useGetSample } from '@/core/sampleApi';
-import { WithQueryClient } from '@/components/context/WithQueryClient';
+import { AxiosError } from 'axios';
+import {
+  sampleGetHandler,
+  sampleInteractor,
+  samplePostHandler,
+} from '@/core/sampleApi';
+import { sampleRepository } from '@/core/sampleApi/data/repository';
 import { server } from '@/mock';
 
-const wrapper = WithQueryClient();
+describe('interactorのtest', () => {
+  const interactor = sampleInteractor(sampleRepository());
+  const response = {
+    id: '1',
+    mainText: 'sample text',
+    text: 'TOP PAGE',
+    title: 'page1',
+  };
 
-describe('mswを使ったテスト', () => {
-  describe('query', () => {
-    test('sampleEntityを取得', async () => {
-      const { result } = renderHook(() => useGetSample(1), { wrapper });
-      await waitFor(() => {
-        expect(result.current.data).toEqual({
-          id: '1',
-          title: 'page1',
-          text: 'TOP PAGE',
-          mainText: 'sample text',
-        });
-      });
+  describe('findByIdのtest', () => {
+    test('sampleEntityをSampleResponseModelに変換して返す', async () => {
+      await expect(interactor.findById(1)).resolves.toEqual(response);
+    });
+
+    test('失敗時errorをthrowする', async () => {
+      server.use(sampleGetHandler(403));
+      await expect(interactor.findById(1)).rejects.toThrow(AxiosError);
     });
   });
 
-  describe('mutation', () => {
-    const data: SampleRequestParams = {
+  describe('createのtest', () => {
+    const request = {
       id: '1',
-      title: 'mutation',
-      text: 'new text',
+      mainText: 'sample text',
+      text: 'TOP PAGE',
+      title: 'page1',
     };
 
-    test('成功時はentityが返る', async () => {
-      server.use(samplePostHandler(200));
+    test('sampleEntityを返却する', async () => {
+      await expect(interactor.create(request)).resolves.toEqual(response);
+    });
 
-      const { result } = renderHook(() => useCreateSample(), { wrapper });
-      act(() => {
-        result.current.mutate(data);
-      });
-
-      await waitFor(() => {
-        expect(result.current.data).toEqual({
-          id: 1,
-          title: 'page1',
-          text: 'TOP PAGE',
-          mainText: 'sample text',
-        });
-      });
+    test('失敗時errorをthrowする', async () => {
+      server.use(samplePostHandler(403));
+      await expect(interactor.create(request)).rejects.toThrow(AxiosError);
     });
   });
 });

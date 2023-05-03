@@ -30,7 +30,7 @@
       [
         {
           "module": "src/core/**/data/*",
-          "allowReferenceFrom": ["src/core/**/index.ts", "src/core/**/adapter/*"]
+          "allowReferenceFrom": ["src/core/**/index.ts", "src/core/**/adapter/*", "src/__test__/**/*"]
         },
         {
           "module": "src/core/**/domain/*",
