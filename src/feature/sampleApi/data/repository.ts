@@ -1,7 +1,7 @@
-import { getFetchClient } from '@/lib/apiClient';
-import { ENDPOINT, apiPath } from '@/constant/path';
 import { type SampleEntity, sampleSchema } from '@/feature/sampleApi/domain/entity';
 import { type SampleRepository, type SampleRequestModel } from '@/feature/sampleApi/domain/usecase';
+import { getFetchClient } from '@/lib/apiClient';
+import { ENDPOINT, apiPath } from '@/constant/path';
 
 export const sampleRepository = (): SampleRepository => {
   const client = getFetchClient({ baseURL: ENDPOINT, camelCase: true });

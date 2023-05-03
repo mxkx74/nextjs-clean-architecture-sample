@@ -1,6 +1,6 @@
 import { waitFor } from '@testing-library/react';
-import { ENDPOINT, apiPath } from '@/constant';
 import { SampleEntity } from '@/feature/sampleApi';
+import { ENDPOINT, apiPath } from '@/constant';
 import { getFetchClient } from '@/lib';
 
 describe('apiClientのテスト', () => {
