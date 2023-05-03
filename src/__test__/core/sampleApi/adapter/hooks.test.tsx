@@ -22,13 +22,13 @@ describe('sampleApiのadapterのtest', () => {
   });
 
   describe('useCreateSample', () => {
-    test('responseのidはnumber', async () => {
+    test('responseのidはstring', async () => {
       const { result } = renderHook(() => useCreateSample(), { wrapper });
       act(() => {
         result.current.mutateAsync(sample);
       });
       await waitFor(() => {
-        expect(result.current.data?.id).toBe(1);
+        expect(result.current.data?.id).toBe('1');
       });
     });
 
