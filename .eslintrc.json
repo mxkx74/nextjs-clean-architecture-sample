@@ -39,11 +39,11 @@
         },
         {
           "module": "react",
-          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "@types"]
+          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "types"]
         },
         {
           "module": "next",
-          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "@types"]
+          "allowReferenceFrom": ["src/component", "src/pages", "src/hooks", "types"]
         },
         {
           "module": "src/component/page/index.tsx",
