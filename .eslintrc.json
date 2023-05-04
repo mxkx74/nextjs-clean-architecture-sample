@@ -29,12 +29,16 @@
       "error",
       [
         {
-          "module": "src/feature/**/data/*",
+          "module": "src/feature/**/infrastructure/*",
           "allowReferenceFrom": ["src/feature/**/index.ts", "src/feature/**/adapter/*", "src/__test__/**/*"]
         },
         {
           "module": "src/feature/**/domain/*",
-          "allowReferenceFrom": ["src/feature/**/adapter/*", "src/feature/**/data/*", "src/feature/**/index.ts"],
+          "allowReferenceFrom": [
+            "src/feature/**/adapter/*",
+            "src/feature/**/infrastructure/*",
+            "src/feature/**/index.ts"
+          ],
           "allowSameModule": true
         },
         {
