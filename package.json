@@ -29,6 +29,7 @@
     "react-responsive": "^9.0.0-beta.4",
     "react-transition-group": "^4.4.2",
     "styled-components": "^5.3.10",
+    "styled-sanitize": "^1.2.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
