@@ -7,7 +7,7 @@ export const userSchema = z.object({
   phone: z.string().regex(/^\d{10,11}$/),
   address: z.string().optional(),
   company: z.string().optional(),
-  description: z.string().max(120).optional(),
+  description: z.string().max(800).optional(),
   createdAt: z.string(),
 });
 

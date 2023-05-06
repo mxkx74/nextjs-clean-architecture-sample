@@ -8,7 +8,7 @@ export const userRepository = (): UserRepository => {
 
   return {
     async findById(id: number) {
-      const response = await client.get<UserEntity>(apiPath.user.index(id), { params: { id } });
+      const response = await client.get<UserEntity>(apiPath.user.index(id));
       return userSchema.parse(response.data);
     },
 

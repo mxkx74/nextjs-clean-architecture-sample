@@ -1,9 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styled, { css } from 'styled-components';
+import { useGetUser } from '@/feature/user';
 import { mediaQuery, spacing } from '@/theme';
 
 const User: NextPage = () => {
+  const { query } = useRouter();
+  const { id } = query;
+  const userId = id ? Number(id) : undefined;
+  const { data } = useGetUser(userId);
+
   return (
     <>
       <Head>
@@ -13,30 +20,22 @@ const User: NextPage = () => {
         <PageTitle>Profile</PageTitle>
         <dl>
           <dt>name</dt>
-          <dd>name</dd>
+          <dd>{data?.name}</dd>
 
           <dt>email</dt>
-          <dd>email</dd>
+          <dd>{data?.email}</dd>
 
           <dt>phone</dt>
-          <dd>phone</dd>
+          <dd>{data?.phone}</dd>
 
           <dt>address</dt>
-          <dd>address</dd>
+          <dd>{data?.address}</dd>
 
           <dt>company</dt>
-          <dd>company</dd>
+          <dd>{data?.company}</dd>
 
           <dt>description</dt>
-          <dd>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the //
-            eslint-disable-next-line react/no-unescaped-entities industry&apos;s standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
-            Lorem Ipsum.
-          </dd>
+          <dd>{data?.description}</dd>
         </dl>
       </Wrapper>
     </>

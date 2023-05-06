@@ -2,7 +2,8 @@ import { UserRepository, convertToUserOutputModel, UserInputParams, convertToUse
 
 export const userInteractor = (repository: UserRepository) => {
   return {
-    async findById(id: number) {
+    async findById(id?: number) {
+      if (typeof id === 'undefined') return null;
       return repository.findById(id).then((data) => convertToUserOutputModel(data));
     },
 

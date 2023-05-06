@@ -6,11 +6,14 @@ import { useMutationWrapper, useQueryWrapper } from '@/hooks';
 
 const interactor = userInteractor(userRepository());
 
-export const useGetUser = (id: number) => {
+export const useGetUser = (id?: number) => {
   return useQueryWrapper({
     queryKey: 'user.index',
     deps: [id],
     fetcher: () => interactor.findById(id),
+    options: {
+      enabled: !!(typeof id !== 'undefined'),
+    },
   });
 };
 
