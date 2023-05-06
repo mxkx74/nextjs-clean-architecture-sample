@@ -30,7 +30,7 @@ export const convertToUserInputModel = (input: UserInputParams): UserInputModel 
 };
 
 /**
- * input
+ * output
  */
 export const userOutputModelSchema = userSchema.omit({ createdAt: true });
 
