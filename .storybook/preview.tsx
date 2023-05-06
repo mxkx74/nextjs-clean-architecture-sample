@@ -1,7 +1,8 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import React from 'react';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -16,9 +17,9 @@ export const parameters = {
     },
   },
   viewport: {
-    viewports: INITIAL_VIEWPORTS
-  }
-}
+    viewports: INITIAL_VIEWPORTS,
+  },
+};
 
 export const globalTypes = {
   direction: {
@@ -32,12 +33,11 @@ export const globalTypes = {
   },
 };
 
-const withGlobal = (StoryFn: Function, context: StoryContext) => {
-
+const withGlobal = (StoryFn: Function) => {
   return (
     <div id="story-wrapper">
       {/** css restコンポーネントなどを読み込む */}
-      {/** <Style /> */ }
+      {/** <Style /> */}
       <StoryFn />
     </div>
   );
