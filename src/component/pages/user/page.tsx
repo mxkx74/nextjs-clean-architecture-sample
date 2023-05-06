@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styled from 'styled-components';
-import { spacing } from '@/theme';
+import styled, { css } from 'styled-components';
+import { mediaQuery, spacing } from '@/theme';
 
 const User: NextPage = () => {
   return (
@@ -51,19 +51,29 @@ const PageTitle = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  width: 450px;
   margin: 0 auto;
+
+  ${mediaQuery.pc(css`
+    width: 450px;
+  `)}
 
   > dl {
     dt {
-      float: left;
-      width: 110px;
-      text-align: right;
       font-weight: bold;
-      padding-right: ${spacing.XL}px;
+
+      ${mediaQuery.pc(css`
+        text-align: right;
+        float: left;
+        width: 110px;
+        padding-right: ${spacing.XL}px;
+      `)}
     }
     dd {
-      margin-left: 110px;
+      margin: 0 0 ${spacing.L}px 0;
+
+      ${mediaQuery.pc(css`
+        margin-left: 110px;
+      `)}
     }
   }
 `;

@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button } from '@/component/ui/Button';
 import { Label } from '@/component/ui/Label/Label';
 import { Stack } from '@/component/ui/Stack';
 import { TextInput } from '@/component/ui/TextInput';
+import { mediaQuery } from '@/theme';
 
 const Home: NextPage = () => {
   return (
@@ -40,9 +41,12 @@ const PageTitle = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  width: 300px;
   border-width: 1px 0 0 0;
   margin: 0 auto;
+
+  ${mediaQuery.pc(css`
+    width: 300px;
+  `)}
 `;
 
 const FormWrapper = styled(Stack)``;
