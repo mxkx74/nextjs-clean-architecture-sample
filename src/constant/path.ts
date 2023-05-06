@@ -7,6 +7,10 @@ export const apiPath = {
     index: () => `${ENDPOINT}/sample`,
     update: () => `${ENDPOINT}/sample`,
   },
+  user: {
+    index: (id: number) => `${ENDPOINT}/user/${id}`,
+    create: () => `${ENDPOINT}/user`,
+  },
 };
 
 // useQuery用のユニークなqueryKeyを生成する
