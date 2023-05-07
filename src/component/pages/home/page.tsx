@@ -4,10 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { type AuthLoginValidation, authLoginValidationSchema, useAuthLogin } from '@/feature/auth';
-import { Button } from '@/component/ui';
-import { Label } from '@/component/ui/Label';
-import { Stack } from '@/component/ui/Stack';
-import { TextInput } from '@/component/ui/TextInput';
+import { Button, Label, Stack, TextInput } from '@/component/ui';
 import { font, mediaQuery, uiColor } from '@/theme';
 
 const Home: NextPage = () => {
