@@ -1,10 +1,10 @@
 import { waitFor } from '@testing-library/react';
 import { SampleEntity } from '@/feature/sampleApi';
-import { ENDPOINT, apiPath } from '@/constant';
+import { apiPath } from '@/constant';
 import { getFetchClient } from '@/lib';
 
 describe('apiClientのテスト', () => {
-  const fetcher = getFetchClient({ baseURL: ENDPOINT, camelCase: true });
+  const fetcher = getFetchClient({ camelCase: true });
   const resource = apiPath.sample.index();
 
   describe('get', () => {
