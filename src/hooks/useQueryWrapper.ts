@@ -1,8 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import type { ApiQueryKeys } from '@/constant/path';
+import { type QueryFunction, type QueryKey, type UseQueryOptions, useQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import { type ApiQueryKeys } from '@/constant/path';
 import { isInternalError } from '@/helper';
-import type { QueryFunction, QueryKey, UseQueryOptions } from '@tanstack/react-query';
-import type { AxiosError } from 'axios';
 
 type Props<
   TQueryFnData = unknown,
