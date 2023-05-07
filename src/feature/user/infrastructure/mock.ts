@@ -86,7 +86,11 @@ export const userGetHandler = (status: 200 | 403 | 404 | 500 = 200) => {
       return res(ctx.status(500));
     }
 
-    return res(ctx.status(status), ctx.json<DeepCamelToSnakeCase<UserEntity>>(deepCamelToSnakeCase(userEntityMock)));
+    return res(
+      ctx.status(status),
+      ctx.delay(500),
+      ctx.json<DeepCamelToSnakeCase<UserEntity>>(deepCamelToSnakeCase(userEntityMock))
+    );
   });
 };
 

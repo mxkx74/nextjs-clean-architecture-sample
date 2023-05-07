@@ -1,15 +1,18 @@
+import { Suspense } from 'react';
 import type { NextPage } from 'next';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { ErrorBoundary } from 'react-error-boundary';
 import styled, { css } from 'styled-components';
-import { useGetUser } from '@/feature/user';
 import { mediaQuery, spacing } from '@/theme';
+
+const ProfileDetail = dynamic(() => import('./Detail').then((mod) => mod.ProfileDetail), { ssr: false });
 
 const User: NextPage = () => {
   const { query } = useRouter();
   const { id } = query;
   const userId = id ? Number(id) : undefined;
-  const { data } = useGetUser(userId);
 
   return (
     <>
@@ -18,25 +21,11 @@ const User: NextPage = () => {
       </Head>
       <Wrapper>
         <PageTitle>Profile</PageTitle>
-        <dl>
-          <dt>name</dt>
-          <dd>{data?.name}</dd>
-
-          <dt>email</dt>
-          <dd>{data?.email}</dd>
-
-          <dt>phone</dt>
-          <dd>{data?.phone}</dd>
-
-          <dt>address</dt>
-          <dd>{data?.address}</dd>
-
-          <dt>company</dt>
-          <dd>{data?.company}</dd>
-
-          <dt>description</dt>
-          <dd>{data?.description}</dd>
-        </dl>
+        <ErrorBoundary fallback={<div>ERROR</div>}>
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ProfileDetail userId={userId} />
+          </Suspense>
+        </ErrorBoundary>
       </Wrapper>
     </>
   );
