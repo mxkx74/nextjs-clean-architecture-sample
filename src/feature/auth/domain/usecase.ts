@@ -11,21 +11,39 @@ export type AuthRepository = {
 
 /**
  * input
+ * form > validation
+ * validationのschema、type
  */
-export const inputModelSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+export const authLoginValidationSchema = z.object({
+  email: z.string().email({ message: 'メールアドレスの形式が正しくありません' }),
+  password: z.string().min(8, { message: 'パスワードは8文字以上で入力してください' }),
 });
 
-export type AuthLoginInputModel = z.output<typeof inputModelSchema>;
+export type AuthLoginValidation = z.infer<typeof authLoginValidationSchema>;
+
+/**
+ * input
+ * validation > api
+ * 送信データ用のschema、type
+ * validationと同じも
+ */
+export const inputModelSchema = authLoginValidationSchema;
+
+export type AuthLoginInputModel = z.infer<typeof inputModelSchema>;
 
 /**
  * output
+ * api > view
+ * データ送信時のレスポンスデータのschema、type
  */
 export const authLoginOutputModelSchema = userSchema.pick({ id: true });
 
-export type AuthLoginOutputModel = z.output<typeof authLoginOutputModelSchema>;
+export type AuthLoginOutputModel = z.infer<typeof authLoginOutputModelSchema>;
 
+/**
+ * output
+ * entityからviewに渡すデータに変換する
+ */
 export const convertToLoginOutputModel = (entity: AuthLoginEntity): AuthLoginOutputModel => {
   return authLoginOutputModelSchema.parse(entity);
 };
