@@ -30,27 +30,3 @@ export const useCreateUser = () => {
     },
   });
 };
-
-// | UseQueryOptions<
-// {
-//   id: number;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   address?: string | undefined;
-//   company?: string | undefined;
-//   description?: string | undefined;
-// } | null,
-// AxiosError<unknown, any>,
-// {
-//   id: number;
-//   name: string;
-//   email: string;
-//   phone: string;
-//   address?: string | undefined;
-//   company?: string | undefined;
-//   description?: string | undefined;
-// } | null,
-// QueryKey
-// >
-// | undefined
