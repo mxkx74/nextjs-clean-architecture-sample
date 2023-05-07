@@ -134,6 +134,7 @@ viewフレームワークに依存するレイヤー。
 │   ├── context
 │   ├── layout
 │   ├── pages
+│   ├── application
 │   └── ui
 ├── constant
 ├── feature
@@ -160,6 +161,7 @@ viewフレームワークに依存するレイヤー。
 - __context__ / contextを定義する
 - __layout__ / ページのレイアウトを定義する
 - __pages__ / next.jsのpagesの実態
+- __application__ / ヘッダーなどapplication固有の共通コンポーネント
 - __ui__ / buttonやcheckboxなど再利用可能な最小限のコンポーネントを定義する。デザインシステムやuiフレームワークなどを使う場合は丸っと置き換えられるようにする。
 
  uiからpagesへの依存はlinterで制限する。
@@ -202,3 +204,8 @@ presentation layerはcomponentにHooksとして定義する。
 
 ### type
 - アプリケーション全体で使用する型定義を定義する
+
+## TODO
+- App directory対応
+- storybookによるインタラクションテスト
+- react hook formとzodを使ったloginコンポーネントの実装
