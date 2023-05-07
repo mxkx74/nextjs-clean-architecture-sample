@@ -2,12 +2,12 @@ import axios from 'axios';
 import { deepCamelToSnakeCase, deepSnakeToCamelCase } from '@/helper';
 
 type Config = {
-  baseURL: string,
-  camelCase?: boolean,
-  csrfToken?: string,
+  baseURL?: string;
+  camelCase?: boolean;
+  csrfToken?: string;
 };
 
-const createClient = ({baseURL, camelCase, csrfToken}: Config) => {
+const createClient = ({ baseURL, camelCase, csrfToken }: Config) => {
   const instance = axios.create({
     headers: {
       'Content-Type': 'application/json',
@@ -19,14 +19,14 @@ const createClient = ({baseURL, camelCase, csrfToken}: Config) => {
     baseURL,
   });
 
-  if(camelCase) {
+  if (camelCase) {
     instance.interceptors.response.use(
       (response) => {
-        const  { data } = response;
-        if((data !== null && typeof data !== 'undefined')) {
+        const { data } = response;
+        if (data !== null && typeof data !== 'undefined') {
           return {
             ...response,
-            data: deepSnakeToCamelCase(data)
+            data: deepSnakeToCamelCase(data),
           };
         }
         return response;
@@ -37,10 +37,10 @@ const createClient = ({baseURL, camelCase, csrfToken}: Config) => {
     instance.interceptors.request.use(
       (config) => {
         const { data } = config;
-        if((data !== null && typeof data !== 'undefined')) {
+        if (data !== null && typeof data !== 'undefined') {
           return {
             ...config,
-            data: deepCamelToSnakeCase(data)
+            data: deepCamelToSnakeCase(data),
           };
         }
         return config;
