@@ -9,7 +9,22 @@ export const apiPath = {
     index: (id: number) => `/api/user/${id}`,
     create: () => '/api/user',
   },
+  auth: {
+    login: () => '/api/auth/login',
+  },
 };
 
 // useQuery用のユニークなqueryKeyを生成する
 export type ApiQueryKeys = KeyPath<typeof apiPath>;
+
+export const route = {
+  top: {
+    index: () => '/',
+  },
+  user: {
+    index: (id: number) => `/user/${id}`,
+  },
+  auth: {
+    login: () => '/login',
+  },
+};
