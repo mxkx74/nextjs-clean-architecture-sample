@@ -23,7 +23,7 @@ describe('userApiのadapterのtest', () => {
         result.current.mutateAsync(userInputParamsMock);
       });
       await waitFor(() => {
-        expect(resetQueriesSpy).toHaveBeenCalledWith(['user.index', 1]);
+        expect(resetQueriesSpy).toHaveBeenCalledWith(['user', 1]);
       });
     });
   });

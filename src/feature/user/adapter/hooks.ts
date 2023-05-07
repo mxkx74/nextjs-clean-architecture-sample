@@ -25,7 +25,7 @@ export const useCreateUser = () => {
     fetcher: (data: UserInputParams) => interactor.create(data),
     options: {
       onSettled: (response) => {
-        queryClient.invalidateQueries(['user.index', response?.id]);
+        queryClient.invalidateQueries(['user', response?.id]);
       },
     },
   });
