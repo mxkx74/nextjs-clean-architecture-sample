@@ -43,11 +43,23 @@
         },
         {
           "module": "react",
-          "allowReferenceFrom": ["src/feature/**/adapter/*", "src/component", "src/pages", "src/hooks", "types"]
+          "allowReferenceFrom": [
+            "src/feature/**/adapter/*",
+            "src/component/**/*",
+            "src/pages/**/*",
+            "src/hooks/**/*",
+            "src/type/**/*"
+          ]
         },
         {
           "module": "next",
-          "allowReferenceFrom": ["src/feature/**/adapter/*", "src/component", "src/pages", "src/hooks", "types"]
+          "allowReferenceFrom": [
+            "src/feature/**/adapter/*",
+            "src/component/**/*",
+            "src/pages/**/*",
+            "src/hooks/**/*",
+            "src/type/**/*"
+          ]
         },
         {
           "module": "src/component/page/index.tsx",
