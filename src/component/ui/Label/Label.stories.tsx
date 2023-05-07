@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Label } from './Label';
+import { Label } from '.';
 
 type Props = typeof Label;
 
