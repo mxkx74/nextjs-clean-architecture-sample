@@ -34,17 +34,15 @@ docker-compose up
 4.  [http://localhost:3000](http://localhost:3000) を開く
 <br><br>
 
-## アーキテクチャーについて
+## アーキテクチャー
 
-### Clean Architectureとは？
-Clean Architectureは、異なるレイヤー間のよく定義された境界と関心の分離を強調するソフトウェアアーキテクチャのアプローチです。主なアイデアは、ビジネスロジックをインフラストラクチャの詳細から分離し、コードベースを保守性、テスト性、スケーラビリティに優れたものにすることです。
+Clean Architectureをベースに、異なるレイヤー間の境界と関心の分離をする。domain、infrastructureをview frameworkから分離し依存しないようにすることで保守性、テスト性、スケーラビリティに優れたものにすることを意識する。
 
 ![68747470733a2f2f71696974612d696d6167652d73746f72652e73332e61702d6e6f727468656173742d312e616d617a6f6e6177732e636f6d2f302f3337323830342f63316536326265632d313231382d353335392d396337622d3865326634626136396131642e706e67](https://user-images.githubusercontent.com/11023893/236092356-0a3c1e5b-657c-4f03-aa4f-c786574bee9a.png)
 
 
 
 本プロジェクトでのレイヤー構成は以下の通り。
-Clean architectureのレイヤーは以下の通り。
 - __Infrastructure Layer__ / データの取得や保存を行う
 - __Domain Layer__ / ドメインモデルを定義する
 - __Interface Adapters Layer__ / ドメインモデルをUIに適した形に変換する
@@ -76,13 +74,13 @@ export type sampleEntity = {
 };
 ```
 usecaseにはinput portやoutput portなど型のみを定義し、interactorでusecaseの実装を行う。
-interactorがRepositoryを使用することによって外側のレイヤーに依存することになるが、依存性逆転の原則を守るためにRepositoryのinterfaceをusecaseで定義し、interactorはinterfaceに依存するようにする。<br>
-またEntityからview modelへの変換もこのレイヤーで行う。
+interactorがRepositoryを使用することによって外側のレイヤーに依存することになるが、依存性逆転の原則を守るためにrepositoryのinterfaceをusecaseで定義し、interactorはinterfaceに依存するようにする。<br>
+またentityからview modelへの変換もこのレイヤーで行う。
 
 ##### ・feature/domain/usecase.ts
 
 ```typescript
-// -repositoryのinterfaceをusecaseで定義
+// repositoryのinterfaceをusecaseで定義
 export type SampleRepository = {
   getSample: () => Promise<sampleEntity>;
 };
@@ -116,7 +114,7 @@ export const sampleInteractor = (repository: SampleRepository) => {
 usecaseレイヤーとpresentationレイヤーの橋渡しを行う。<br>
 tanstack/queryやSWRなどのキャッシュクライアントを使用する場合はここで定義する。
 <br>
-viewフレームワークに依存できる
+viewフレームワークに依存できる。
 
  ### Presentation Layer
 - hooks
@@ -187,6 +185,9 @@ presentation layerはcomponentにHooksとして定義する。
   - __usecase__ / infrastructureとdomainを繋ぐinterfaceを定義する
   - __interactor__ / usecaseの実装を定義する
 
+### theme
+- colorやfont sizeなどtoken、semanticな定数を定義する
+
 ### helper
 - アプリケーション全体で使用するヘルパー関数を定義する
 
@@ -208,5 +209,5 @@ presentation layerはcomponentにHooksとして定義する。
 ## TODO
 - App directory対応
 - storybookによるインタラクションテスト
-- react hook formとzodを使ったloginコンポーネントの実装
 - zero runtime css in jsの導入
+- global stateをcontextからrecoilに変更

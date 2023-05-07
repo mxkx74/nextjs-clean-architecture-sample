@@ -13,7 +13,7 @@ export const useAuthLogin = () => {
     fetcher: (data: AuthLoginInputModel) => interactor.login(data),
     options: {
       onSuccess: (data) => {
-        push(route.user.index(data.id));
+        push(route.user(data.id));
       },
     },
   });

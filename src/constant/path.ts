@@ -18,13 +18,10 @@ export const apiPath = {
 export type ApiQueryKeys = KeyPath<typeof apiPath>;
 
 export const route = {
-  top: {
-    index: () => '/',
-  },
-  user: {
-    index: (id: number) => `/user/${id}`,
-  },
+  top: () => '/',
+  user: (id: number) => `/user/${id}`,
   auth: {
     login: () => '/login',
+    logout: () => '/logout',
   },
 };
