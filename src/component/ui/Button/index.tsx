@@ -25,8 +25,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${radius.large}px;
-  background: ${uiColor.primary.main};
 
   > button,
   > a {
@@ -38,6 +36,12 @@ const Wrapper = styled.div`
     align-items: center;
     padding: ${spacing.L}px;
     border: none;
-    background: transparent;
+    border-radius: ${radius.large}px;
+    background: ${uiColor.primary.main};
+
+    &:disabled {
+      cursor: none;
+      opacity: 0.5;
+    }
   }
 `;

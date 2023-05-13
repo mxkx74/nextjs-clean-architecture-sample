@@ -43,6 +43,7 @@ const Wrapper = styled.div<{ width?: number }>`
   padding: 0 ${spacing.L}px;
   min-height: ${spacing['4XL']}px;
   background-color: ${uiColor.background.white};
+  box-sizing: border-box;
 
   &.error {
     border-color: ${uiColor.error.main};
