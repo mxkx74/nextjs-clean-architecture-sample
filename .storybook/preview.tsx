@@ -1,5 +1,6 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import React from 'react';
+import { WithQueryClient } from '../src/component/context/WithQueryClient';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -33,12 +34,14 @@ export const globalTypes = {
   },
 };
 
+const Wrapper = WithQueryClient();
+
 const withGlobal = (StoryFn: Function) => {
   return (
     <div id="story-wrapper">
-      {/** css restコンポーネントなどを読み込む */}
-      {/** <Style /> */}
-      <StoryFn />
+      <Wrapper>
+        <StoryFn />
+      </Wrapper>
     </div>
   );
 };
