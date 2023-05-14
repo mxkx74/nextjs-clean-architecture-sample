@@ -1,18 +1,26 @@
-import { ComponentPropsWithRef, ElementType, forwardRef } from 'react';
+import { ComponentProps, ComponentPropsWithRef, ElementType, PropsWithoutRef, forwardRef } from 'react';
 import styled from 'styled-components';
 import { radius, spacing, uiColor } from '@/theme';
 
 type ButtonElement = 'button' | 'a';
 
+type RefType<T extends ElementType = ButtonElement> = PropsWithoutRef<ComponentProps<T>>[string];
+
 type Props<T extends ElementType = ButtonElement> = {
   tag?: T;
+  children?: React.ReactNode;
 } & Omit<ComponentPropsWithRef<T>, 'tag'>;
 
-const Component = <T extends ElementType = ButtonElement>({ tag, ...props }: Props<T>) => {
+const Component = <T extends ElementType = ButtonElement>(
+  { tag, children, ...props }: Props<T>,
+  ref: RefType<T>
+): JSX.Element => {
   const Tag = tag || 'button';
   return (
     <Wrapper>
-      <Tag {...props} />
+      <Tag {...props} ref={ref}>
+        {children}
+      </Tag>
     </Wrapper>
   );
 };
@@ -25,8 +33,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: ${radius.large}px;
-  background: ${uiColor.primary.main};
 
   > button,
   > a {
@@ -38,6 +44,12 @@ const Wrapper = styled.div`
     align-items: center;
     padding: ${spacing.L}px;
     border: none;
-    background: transparent;
+    border-radius: ${radius.large}px;
+    background: ${uiColor.primary.main};
+
+    &:disabled {
+      cursor: none;
+      opacity: 0.5;
+    }
   }
 `;

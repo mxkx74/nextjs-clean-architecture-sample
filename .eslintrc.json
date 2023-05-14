@@ -37,7 +37,8 @@
           "allowReferenceFrom": [
             "src/feature/**/adapter/*",
             "src/feature/**/infrastructure/*",
-            "src/feature/**/index.ts"
+            "src/feature/**/index.ts",
+            "src/__test__/**/*"
           ],
           "allowSameModule": true
         },
@@ -48,7 +49,8 @@
             "src/component/**/*",
             "src/pages/**/*",
             "src/hooks/**/*",
-            "src/type/**/*"
+            "src/type/**/*",
+            "src/__test__/**/*"
           ]
         },
         {
@@ -58,7 +60,8 @@
             "src/component/**/*",
             "src/pages/**/*",
             "src/hooks/**/*",
-            "src/type/**/*"
+            "src/type/**/*",
+            "src/__test__/**/*"
           ]
         },
         {
