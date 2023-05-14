@@ -3,7 +3,7 @@
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/mxkx74/nextjs-typescript)
 
 
-## Tech Stack
+## 技術Stack
 [![My Skills](https://skillicons.dev/icons?i=nextjs,react,typescript,styledcomponents,jest,docker)](https://skillicons.dev)
 - [Next.js](https://nextjs.org/)
 - [react](https://reactjs.org/)
@@ -17,10 +17,10 @@
 - [docker](https://www.docker.com/)
 <br><br>
 
-## Getting Started
+## 初めに
 1. リポジトリをクローン
 ```bash
-git clone git@github.com:mxkx74/nextjs-typescript.git
+git clone git@github.com:mxkx74/nextjs-clean-architecture-sample.git
 ```
 
 2. ライブラリのインストール
@@ -65,7 +65,7 @@ reactやNext.jsなどのviewフレームワークライブラリに依存しな�
 - usecase
 - interactor
 
-Entityにビジネスロジックを定義する。frontendの場合主にAPIの型を定義することになる。既存の複数のAPIを組み合わせてEntityを定義する場合は集約ルートを定義しビジネスロジックを定義する。<br>
+Entityにビジネスロジックを定義する。frontendの場合主にAPIの型を定義することになる。外部APIなどの複数のAPIを組み合わせてEntityを定義する場合は集約ルートを定義する。<br>
 ```typescript
 // 集約rootの型定義
 export type sampleEntity = {
@@ -208,6 +208,5 @@ presentation layerはcomponentにHooksとして定義する。
 
 ## TODO
 - App directory対応
-- storybookによるインタラクションテスト
 - zero runtime css in jsの導入
 - global stateをcontextからrecoilに変更
