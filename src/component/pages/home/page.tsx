@@ -2,11 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import { type AuthLoginValidation, authLoginValidationSchema, useAuthLogin } from '@/feature/auth';
 import { Button, Label, Stack, TextInput } from '@/component/ui';
 import { route } from '@/constant';
+import { useHookForm } from '@/hooks/useHookForm';
 import { font, mediaQuery, uiColor } from '@/theme';
 
 const Home: NextPage = () => {
@@ -18,19 +18,11 @@ const Home: NextPage = () => {
 
   const {
     register,
-    handleSubmit,
     formState: { errors, isValid },
-  } = useForm<AuthLoginValidation>({
-    mode: 'onTouched',
-    reValidateMode: 'onChange',
-    shouldFocusError: true,
-    shouldUnregister: false,
+    handleSubmit,
+  } = useHookForm<AuthLoginValidation>({
     resolver: zodResolver(authLoginValidationSchema),
   });
-
-  const onSubmit: SubmitHandler<AuthLoginValidation> = (data) => {
-    mutate(data);
-  };
 
   return (
     <>
@@ -39,7 +31,7 @@ const Home: NextPage = () => {
       </Head>
       <Wrapper>
         <PageTitle>LOGIN</PageTitle>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit((data) => mutate(data))}>
           <FormWrapper direction="column" spacing="XXL">
             <FromGroup>
               <Label htmlFor="email">USER NAME</Label>
