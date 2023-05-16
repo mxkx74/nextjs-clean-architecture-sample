@@ -1,7 +1,7 @@
 import { StoryObj, Meta } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
 import { sleep } from '@/helper';
-import { Home } from './page';
+import Home from './page';
 
 const meta: Meta<typeof Home> = {
   component: Home,

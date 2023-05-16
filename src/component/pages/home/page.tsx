@@ -9,7 +9,7 @@ import { Button, Label, Stack, TextInput } from '@/component/ui';
 import { route } from '@/constant';
 import { font, mediaQuery, uiColor } from '@/theme';
 
-export const Home: NextPage = () => {
+const Home: NextPage = () => {
   const { push } = useRouter();
 
   const { mutate } = useAuthLogin({
