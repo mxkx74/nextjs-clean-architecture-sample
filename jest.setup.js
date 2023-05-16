@@ -6,6 +6,7 @@ jest.mock('next/router', () => require('next-router-mock'));
 
 beforeAll(() => server.listen());
 afterEach(() => {
+  jest.clearAllMocks();
   server.resetHandlers();
   cleanup();
 });
