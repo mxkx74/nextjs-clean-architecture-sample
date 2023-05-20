@@ -4,7 +4,10 @@ import { server } from './src/mock';
 
 jest.mock('next/router', () => require('next-router-mock'));
 
-beforeAll(() => server.listen());
+beforeAll(() => {
+  server.listen();
+  global.IS_REACT_ACT_ENVIRONMENT = false;
+});
 afterEach(() => {
   jest.clearAllMocks();
   server.resetHandlers();
