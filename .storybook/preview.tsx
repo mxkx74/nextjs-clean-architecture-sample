@@ -1,8 +1,11 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import React from 'react';
-import { setupWorker } from 'msw';
 import { WithQueryClient } from '../src/component/context/WithQueryClient';
 import { handlers } from '../src/mock/handlers';
+import { initialize, mswDecorator } from 'msw-storybook-addon';
+
+// Initialize MSW
+initialize();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -22,6 +25,9 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
+  msw: {
+    handlers: handlers,
+  },
 };
 
 export const globalTypes = {
@@ -39,14 +45,6 @@ export const globalTypes = {
 const Wrapper = WithQueryClient();
 
 const withGlobal = (StoryFn: Function) => {
-  if (typeof global.process === 'undefined') {
-    const worker = setupWorker();
-    worker.start();
-    worker.resetHandlers();
-    worker.use(...handlers);
-    (window as any).msw = { worker };
-  }
-
   return (
     <div id="story-wrapper">
       <Wrapper>
@@ -56,4 +54,4 @@ const withGlobal = (StoryFn: Function) => {
   );
 };
 
-export const decorators = [withGlobal];
+export const decorators = [withGlobal, mswDecorator];
