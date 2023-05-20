@@ -1,4 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
+import { userGetHandler } from '@/feature/user';
 import User from './page';
 
 const meta: Meta<typeof User> = {
@@ -22,3 +23,11 @@ export default meta;
 type Story = StoryObj<typeof User>;
 
 export const Default: Story = {};
+
+export const ApiError: Story = {};
+
+ApiError.parameters = {
+  msw: {
+    handlers: [userGetHandler(403)],
+  },
+};
