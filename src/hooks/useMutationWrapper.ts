@@ -10,7 +10,7 @@ type Props<TData = unknown, TError = unknown, TVariables = void, TContext = unkn
 
 export const useMutationWrapper = <D, E, V, C>({ fetcher, options }: Props<D, E, V, C>) => {
   return useMutation(fetcher, {
-    useErrorBoundary: isInternalError,
+    useErrorBoundary: (error) => !isInternalError(error),
     ...options,
   });
 };

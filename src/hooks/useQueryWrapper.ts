@@ -16,7 +16,7 @@ type Props<
 
 export const useQueryWrapper = <T, E, D extends T>({ queryKey, deps = [], options, fetcher }: Props<T, E, D>) => {
   return useQuery([queryKey, ...deps] as QueryKey, fetcher, {
-    useErrorBoundary: isInternalError,
+    useErrorBoundary: (error) => !isInternalError(error),
     ...options,
   });
 };
