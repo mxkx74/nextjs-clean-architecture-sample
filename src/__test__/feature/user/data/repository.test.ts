@@ -16,8 +16,7 @@ describe('repositoryのtest', () => {
 
   describe('get', () => {
     test('userEntityがapiから返る', async () => {
-      const result = await repository.findById(1);
-      expect(result).toEqual(userEntityMock);
+      await expect(repository.findById(1)).resolves.toEqual(userEntityMock);
     });
 
     test('errorをthrowする', async () => {

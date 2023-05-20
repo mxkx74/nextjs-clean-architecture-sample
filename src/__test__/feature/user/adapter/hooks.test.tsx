@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import { useCreateUser, useGetUser, userOutputModelMock, userInputParamsMock } from '@/feature/user';
 import { WithQueryClient } from '@/component/context/WithQueryClient';
 import { queryClient } from '@/lib';
@@ -19,12 +19,8 @@ describe('userApiのadapterのtest', () => {
     test('成功時invalidateQueriesがcallされる', async () => {
       const resetQueriesSpy = jest.spyOn(queryClient, 'invalidateQueries');
       const { result } = renderHook(() => useCreateUser(), { wrapper });
-      act(() => {
-        result.current.mutateAsync(userInputParamsMock);
-      });
-      await waitFor(() => {
-        expect(resetQueriesSpy).toHaveBeenCalledWith(['user', 1]);
-      });
+      await result.current.mutateAsync(userInputParamsMock);
+      expect(resetQueriesSpy).toHaveBeenCalledWith(['user', 1]);
     });
   });
 });

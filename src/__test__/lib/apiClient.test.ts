@@ -1,4 +1,3 @@
-import { waitFor } from '@testing-library/react';
 import { SampleEntity } from '@/feature/sampleApi';
 import { apiPath } from '@/constant';
 import { getFetchClient } from '@/lib';
@@ -10,10 +9,7 @@ describe('apiClientのテスト', () => {
   describe('get', () => {
     test('responseがsnakeCaseからcamelCaseに変換される', async () => {
       const result = await fetcher.get<SampleEntity>(resource, { params: { id: 1 } });
-
-      await waitFor(() => {
-        expect(result.data).toHaveProperty('mainText');
-      });
+      expect(result.data).toHaveProperty('mainText');
     });
   });
 });
