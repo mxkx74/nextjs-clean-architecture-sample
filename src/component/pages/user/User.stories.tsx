@@ -24,10 +24,10 @@ type Story = StoryObj<typeof User>;
 
 export const Default: Story = {};
 
-export const ApiError: Story = {};
-
-ApiError.parameters = {
-  msw: {
-    handlers: [userGetHandler(403)],
+export const ApiError: Story = {
+  parameters: {
+    msw: {
+      handlers: [userGetHandler(403)],
+    },
   },
 };
