@@ -22,7 +22,7 @@ const User: NextPage = () => {
       <Wrapper>
         <PageTitle>Profile</PageTitle>
         <ErrorBoundary fallback={<div>ERROR</div>}>
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <ProfileDetail userId={userId} />
           </Suspense>
         </ErrorBoundary>
